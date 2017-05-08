@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.gmore.lapag.initial_userActivity"
+    tools:showIn="@layout/app_bar_initial_user"
+    android:background="#F0F0F0">
+
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="87dp"
+        android:drawableLeft="@drawable/transferido"
+        android:drawablePadding="6dp"
+        android:text="Transferido"
+        android:textColor="@color/tranferido"
+        android:background="@drawable/shadow"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="213dp"
+        android:drawableLeft="@drawable/faturado"
+        android:background="@drawable/shadow"
+        android:drawablePadding="6dp"
+        android:text="Faturado"
+        android:textColor="@color/faturado"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="338dp"
+        android:drawableLeft="@drawable/aproved"
+        android:background="@drawable/shadow"
+        android:drawablePadding="6dp"
+        android:text="Trabalhos realizados"
+        android:textColor="@color/aprovadas"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="459dp"
+        android:drawableLeft="@drawable/areceber"
+        android:background="@drawable/shadow"
+        android:drawablePadding="6dp"
+        android:text="A receber"
+        android:textColor="@color/areceber"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
+
+</android.support.constraint.ConstraintLayout>
