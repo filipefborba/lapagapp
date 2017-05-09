@@ -15,12 +15,6 @@
     <!-- Login progress -->
 
 
-    <ImageView
-        android:id="@+id/lapag_image"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/lapag2" />
-
     <ProgressBar
         android:id="@+id/login_progress"
         style="?android:attr/progressBarStyleLarge"
@@ -39,7 +33,33 @@
             android:id="@+id/email_login_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_margin="20dp"
+            android:layout_marginBottom="0dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="0dp"
+            android:animateLayoutChanges="false"
+            android:animationCache="false"
+            android:background="@drawable/rounded_corner"
+            android:orientation="vertical"
+            android:padding="80dp"
+            android:paddingEnd="0dp"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:paddingStart="0dp"
+            android:paddingTop="0dp"
+            android:weightSum="1">
+
+            <ImageView
+                android:id="@+id/lapag_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="0dp"
+                android:layout_weight="0.28"
+                android:padding="0dp"
+                android:paddingTop="0dp"
+                app:srcCompat="@drawable/lapag2" />
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -49,6 +69,7 @@
                     android:id="@+id/email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
                     android:hint="@string/prompt_email"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
@@ -64,6 +85,7 @@
                     android:id="@+id/password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
                     android:hint="Senha"
                     android:imeActionId="@+id/login"
                     android:imeActionLabel="@string/action_sign_in_short"
@@ -78,10 +100,11 @@
                 android:id="@+id/email_sign_in_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="16dp"
-                android:background="?android:attr/colorAccent"
+                android:layout_margin="45dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/button_rounded_corner"
                 android:text="@string/action_sign_in_short"
                 android:textStyle="bold" />
 

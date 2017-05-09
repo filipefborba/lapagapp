@@ -10,84 +10,60 @@
     android:background="#F0F0F0">
 
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="495dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="87dp"
-        android:drawableLeft="@drawable/transferido"
-        android:drawablePadding="6dp"
-        android:text="Transferido"
-        android:textColor="@color/tranferido"
-        android:background="@drawable/shadow"
-        android:textSize="18sp"
-        android:textStyle="bold"
+        android:orientation="vertical"
+        android:weightSum="1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteY="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        android:layout_marginEnd="8dp"
+        android:id="@+id/linearLayout">
+
+        <TextView
+            android:id="@+id/a_receber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/shadow"
+            android:drawableLeft="@drawable/areceber"
+            android:drawablePadding="6dp"
+            android:text="À receber"
+            android:textColor="@color/areceber"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </LinearLayout>
 
     <TextView
-        android:id="@+id/textView4"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
+        android:id="@+id/a_receber_valor"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="213dp"
-        android:drawableLeft="@drawable/faturado"
-        android:background="@drawable/shadow"
-        android:drawablePadding="6dp"
-        android:text="Faturado"
-        android:textColor="@color/faturado"
-        android:textSize="18sp"
+        android:layout_marginTop="8dp"
+        android:text="R$55,11"
+        android:textSize="24sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+        app:layout_constraintHorizontal_bias="0.421"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="338dp"
-        android:drawableLeft="@drawable/aproved"
-        android:background="@drawable/shadow"
-        android:drawablePadding="6dp"
-        android:text="Trabalhos realizados"
-        android:textColor="@color/aprovadas"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="459dp"
-        android:drawableLeft="@drawable/areceber"
-        android:background="@drawable/shadow"
-        android:drawablePadding="6dp"
-        android:text="A receber"
-        android:textColor="@color/areceber"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        app:layout_constraintTop_toTopOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.088" />
 
 </android.support.constraint.ConstraintLayout>
