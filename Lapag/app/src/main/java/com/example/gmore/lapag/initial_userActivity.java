@@ -1,6 +1,8 @@
 package com.example.gmore.lapag;
 
+import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,7 +15,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.TabHost;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.BarChart;
@@ -30,9 +34,14 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
+import static com.example.gmore.lapag.R.drawable.button_rounded_corner_areceber;
+
 public class initial_userActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
     private TextView nome_usuario_menu;
+    private Button button_areceber;
+    private Button button_entradas;
+    private Button button_recebidas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +51,14 @@ public class initial_userActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
 
-
-
         nome_usuario_menu = (TextView) findViewById(R.id.nome_usuario_menu);
+        button_areceber = (Button) findViewById(R.id.areceber_button);
+        button_areceber.setOnClickListener(this);
+        button_entradas = (Button) findViewById(R.id.button_entradas);
+        button_entradas.setOnClickListener(this);
+        button_recebidas = (Button) findViewById(R.id.button_recebidas);
+        button_recebidas.setOnClickListener(this);
+
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -58,7 +72,37 @@ public class initial_userActivity extends AppCompatActivity
 
     }
 
+    public void onClick(View v) {
+        if (v.getId() == R.id.areceber_button) {
+            button_areceber.setBackgroundResource(R.drawable.button_rounded_corner_areceber);
+            button_areceber.setTextColor(getResources().getColor(R.color.white));
+            button_entradas.setBackgroundResource(R.drawable.not_clicked_button);
+            button_recebidas.setBackgroundResource(R.drawable.not_clicked_button);
+            button_entradas.setTextColor(getResources().getColor(R.color.faturado));
+            button_recebidas.setTextColor(getResources().getColor(R.color.tranferido));
 
+        }
+        if (v.getId() == R.id.button_entradas) {
+            button_entradas.setBackgroundResource(R.drawable.button_rounded_corner);
+            button_entradas.setTextColor(getResources().getColor(R.color.white));
+            button_areceber.setBackgroundResource(R.drawable.not_clicked_button);
+            button_recebidas.setBackgroundResource(R.drawable.not_clicked_button);
+            button_areceber.setTextColor(getResources().getColor(R.color.areceber));
+            button_recebidas.setTextColor(getResources().getColor(R.color.tranferido));
+
+        }
+        if (v.getId() == R.id.button_recebidas) {
+            button_recebidas.setBackgroundResource(R.drawable.button_rounded_corner_transferido);
+            button_recebidas.setTextColor(getResources().getColor(R.color.white));
+            button_entradas.setBackgroundResource(R.drawable.not_clicked_button);
+            button_areceber.setBackgroundResource(R.drawable.not_clicked_button);
+            button_entradas.setTextColor(getResources().getColor(R.color.faturado));
+            button_areceber.setTextColor(getResources().getColor(R.color.areceber));
+
+
+
+        }
+    }
 
     @Override
     public void onBackPressed() {
