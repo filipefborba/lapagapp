@@ -20,21 +20,10 @@ import android.widget.RelativeLayout;
 import android.widget.TabHost;
 import android.widget.TextView;
 
-import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
-import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.data.LineData;
-import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.utils.ColorTemplate;
 
 
-import org.w3c.dom.Text;
 
-import java.util.ArrayList;
-
-import static com.example.gmore.lapag.R.drawable.button_rounded_corner_areceber;
+import static com.example.gmore.lapag.R.drawable.transferido;
 
 public class initial_userActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
@@ -42,6 +31,14 @@ public class initial_userActivity extends AppCompatActivity
     private Button button_areceber;
     private Button button_entradas;
     private Button button_recebidas;
+    private TextView score_view;
+    private TextView score_value;
+    private TextView areceber_text;
+    private TextView proximo_recebimento_valor;
+    private TextView proximo_recebimento_data;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,12 +49,29 @@ public class initial_userActivity extends AppCompatActivity
 
 
         nome_usuario_menu = (TextView) findViewById(R.id.nome_usuario_menu);
+        score_view = (TextView) findViewById(R.id.score_view);
+        score_value = (TextView) findViewById(R.id.score);
+        areceber_text = (TextView) findViewById(R.id.areceber_texto);
+        proximo_recebimento_valor = (TextView) findViewById(R.id.proximo_recebimento_valor);
+        proximo_recebimento_data = (TextView) findViewById(R.id.proximo_recebimento_data);
+
+
+
+
         button_areceber = (Button) findViewById(R.id.areceber_button);
         button_areceber.setOnClickListener(this);
         button_entradas = (Button) findViewById(R.id.button_entradas);
         button_entradas.setOnClickListener(this);
         button_recebidas = (Button) findViewById(R.id.button_recebidas);
         button_recebidas.setOnClickListener(this);
+
+
+        button_areceber.setBackgroundResource(R.drawable.button_rounded_corner_areceber);
+        button_areceber.setTextColor(getResources().getColor(R.color.white));
+        button_entradas.setBackgroundResource(R.drawable.not_clicked_button);
+        button_recebidas.setBackgroundResource(R.drawable.not_clicked_button);
+        button_entradas.setTextColor(getResources().getColor(R.color.faturado));
+        button_recebidas.setTextColor(getResources().getColor(R.color.tranferido));
 
 
 
@@ -74,30 +88,57 @@ public class initial_userActivity extends AppCompatActivity
 
     public void onClick(View v) {
         if (v.getId() == R.id.areceber_button) {
+            Drawable areceber_drawable = getResources().getDrawable(R.drawable.areceber);
+
             button_areceber.setBackgroundResource(R.drawable.button_rounded_corner_areceber);
             button_areceber.setTextColor(getResources().getColor(R.color.white));
             button_entradas.setBackgroundResource(R.drawable.not_clicked_button);
             button_recebidas.setBackgroundResource(R.drawable.not_clicked_button);
             button_entradas.setTextColor(getResources().getColor(R.color.faturado));
             button_recebidas.setTextColor(getResources().getColor(R.color.tranferido));
+            // quando clicar no a recebido rodar função para atualizar valores do
+            score_view.setCompoundDrawablesWithIntrinsicBounds(areceber_drawable, null, null, null);
+            score_value.setTextColor(getResources().getColor(R.color.areceber));
+            areceber_text.setText("À receber");
+            proximo_recebimento_valor.setVisibility(View.VISIBLE);
+            proximo_recebimento_data.setVisibility(View.VISIBLE);
+
 
         }
         if (v.getId() == R.id.button_entradas) {
+            Drawable areceber_drawable = getResources().getDrawable(R.drawable.areceber);
+
             button_entradas.setBackgroundResource(R.drawable.button_rounded_corner);
             button_entradas.setTextColor(getResources().getColor(R.color.white));
             button_areceber.setBackgroundResource(R.drawable.not_clicked_button);
             button_recebidas.setBackgroundResource(R.drawable.not_clicked_button);
             button_areceber.setTextColor(getResources().getColor(R.color.areceber));
             button_recebidas.setTextColor(getResources().getColor(R.color.tranferido));
+            // quando clicar nas entradas rodar função para atualizar valores
+            score_view.setCompoundDrawablesWithIntrinsicBounds(areceber_drawable, null, null, null);
+            score_value.setTextColor(getResources().getColor(R.color.areceber));
+            areceber_text.setText("À receber");
+            proximo_recebimento_valor.setVisibility(View.VISIBLE);
+            proximo_recebimento_data.setVisibility(View.VISIBLE);
 
         }
         if (v.getId() == R.id.button_recebidas) {
+            Drawable transferido_drawable = getResources().getDrawable(R.drawable.transferido);
+
             button_recebidas.setBackgroundResource(R.drawable.button_rounded_corner_transferido);
             button_recebidas.setTextColor(getResources().getColor(R.color.white));
             button_entradas.setBackgroundResource(R.drawable.not_clicked_button);
             button_areceber.setBackgroundResource(R.drawable.not_clicked_button);
             button_entradas.setTextColor(getResources().getColor(R.color.faturado));
             button_areceber.setTextColor(getResources().getColor(R.color.areceber));
+
+            // quando clicar no recebidas rodar função para atualizar valores
+            score_view.setCompoundDrawablesWithIntrinsicBounds(transferido_drawable, null, null, null);
+            score_value.setTextColor(getResources().getColor(R.color.tranferido));
+            areceber_text.setText("Recebido");
+            proximo_recebimento_valor.setVisibility(View.GONE);
+            proximo_recebimento_data.setVisibility(View.GONE);
+
 
 
 
