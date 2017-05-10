@@ -8,4 +8,6 @@
     <color name="faturado">#fb005e</color>
     <color name="areceber">#6068af</color>
     <color name="white">#FFF</color>
+    <color name="background_default">#FAFAFA</color>
+    <color name="default_font">#727272</color>
 </resources>

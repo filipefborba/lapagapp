@@ -1,11 +1,8 @@
 package com.example.gmore.lapag;
 
-import android.content.Intent;
-import android.graphics.Color;
+
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,18 +13,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
-import android.widget.RelativeLayout;
-import android.widget.TabHost;
+
 import android.widget.TextView;
 
 
 
 
-import static com.example.gmore.lapag.R.drawable.transferido;
 
 public class initial_userActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
-    private TextView nome_usuario_menu;
     private Button button_areceber;
     private Button button_entradas;
     private Button button_recebidas;
@@ -48,7 +42,6 @@ public class initial_userActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
 
-        nome_usuario_menu = (TextView) findViewById(R.id.nome_usuario_menu);
         score_view = (TextView) findViewById(R.id.score_view);
         score_value = (TextView) findViewById(R.id.score);
         areceber_text = (TextView) findViewById(R.id.areceber_texto);
@@ -101,7 +94,8 @@ public class initial_userActivity extends AppCompatActivity
             score_value.setTextColor(getResources().getColor(R.color.areceber));
             areceber_text.setText("À receber");
             proximo_recebimento_valor.setVisibility(View.VISIBLE);
-            proximo_recebimento_data.setVisibility(View.VISIBLE);
+            proximo_recebimento_data.setTextColor(getResources().getColor(R.color.default_font));
+
 
 
         }
@@ -119,7 +113,7 @@ public class initial_userActivity extends AppCompatActivity
             score_value.setTextColor(getResources().getColor(R.color.areceber));
             areceber_text.setText("À receber");
             proximo_recebimento_valor.setVisibility(View.VISIBLE);
-            proximo_recebimento_data.setVisibility(View.VISIBLE);
+            proximo_recebimento_data.setTextColor(getResources().getColor(R.color.default_font));
 
         }
         if (v.getId() == R.id.button_recebidas) {
@@ -136,8 +130,8 @@ public class initial_userActivity extends AppCompatActivity
             score_view.setCompoundDrawablesWithIntrinsicBounds(transferido_drawable, null, null, null);
             score_value.setTextColor(getResources().getColor(R.color.tranferido));
             areceber_text.setText("Recebido");
+            proximo_recebimento_data.setTextColor(getResources().getColor(R.color.background_default));
             proximo_recebimento_valor.setVisibility(View.GONE);
-            proximo_recebimento_data.setVisibility(View.GONE);
 
 
 
