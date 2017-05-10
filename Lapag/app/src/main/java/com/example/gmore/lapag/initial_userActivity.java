@@ -12,8 +12,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -30,6 +33,7 @@ public class initial_userActivity extends AppCompatActivity
     private TextView areceber_text;
     private TextView proximo_recebimento_valor;
     private TextView proximo_recebimento_data;
+    private boolean animation_chooser;
 
 
 
@@ -68,6 +72,12 @@ public class initial_userActivity extends AppCompatActivity
 
 
 
+
+// Now Set your animation
+
+
+
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -80,7 +90,16 @@ public class initial_userActivity extends AppCompatActivity
     }
 
     public void onClick(View v) {
+        Animation fadeInAnimation = AnimationUtils.loadAnimation(this, R.anim.fade_in);
         if (v.getId() == R.id.areceber_button) {
+            if (animation_chooser == true){
+                score_view.startAnimation(fadeInAnimation);
+                score_value.startAnimation(fadeInAnimation);
+                areceber_text.startAnimation(fadeInAnimation);
+                proximo_recebimento_data.startAnimation(fadeInAnimation);
+                proximo_recebimento_valor.startAnimation(fadeInAnimation);
+            }
+
             Drawable areceber_drawable = getResources().getDrawable(R.drawable.areceber);
 
             button_areceber.setBackgroundResource(R.drawable.button_rounded_corner_areceber);
@@ -89,17 +108,26 @@ public class initial_userActivity extends AppCompatActivity
             button_recebidas.setBackgroundResource(R.drawable.not_clicked_button);
             button_entradas.setTextColor(getResources().getColor(R.color.faturado));
             button_recebidas.setTextColor(getResources().getColor(R.color.tranferido));
-            // quando clicar no a recebido rodar função para atualizar valores do
+            // quando clicar no a recebido rodar função para atualizar valores
             score_view.setCompoundDrawablesWithIntrinsicBounds(areceber_drawable, null, null, null);
             score_value.setTextColor(getResources().getColor(R.color.areceber));
             areceber_text.setText("À receber");
-            proximo_recebimento_valor.setVisibility(View.VISIBLE);
+            proximo_recebimento_valor.setTextColor(getResources().getColor(R.color.default_font));
             proximo_recebimento_data.setTextColor(getResources().getColor(R.color.default_font));
+            animation_chooser = false;
 
 
 
         }
         if (v.getId() == R.id.button_entradas) {
+            if (animation_chooser == true){
+                score_view.startAnimation(fadeInAnimation);
+                score_value.startAnimation(fadeInAnimation);
+                areceber_text.startAnimation(fadeInAnimation);
+                proximo_recebimento_data.startAnimation(fadeInAnimation);
+                proximo_recebimento_valor.startAnimation(fadeInAnimation);
+            }
+
             Drawable areceber_drawable = getResources().getDrawable(R.drawable.areceber);
 
             button_entradas.setBackgroundResource(R.drawable.button_rounded_corner);
@@ -112,8 +140,10 @@ public class initial_userActivity extends AppCompatActivity
             score_view.setCompoundDrawablesWithIntrinsicBounds(areceber_drawable, null, null, null);
             score_value.setTextColor(getResources().getColor(R.color.areceber));
             areceber_text.setText("À receber");
-            proximo_recebimento_valor.setVisibility(View.VISIBLE);
             proximo_recebimento_data.setTextColor(getResources().getColor(R.color.default_font));
+            proximo_recebimento_valor.setTextColor(getResources().getColor(R.color.default_font));
+
+            animation_chooser = false;
 
         }
         if (v.getId() == R.id.button_recebidas) {
@@ -127,11 +157,20 @@ public class initial_userActivity extends AppCompatActivity
             button_areceber.setTextColor(getResources().getColor(R.color.areceber));
 
             // quando clicar no recebidas rodar função para atualizar valores
+            //animação
+            score_view.startAnimation(fadeInAnimation);
+            score_value.startAnimation(fadeInAnimation);
+            areceber_text.startAnimation(fadeInAnimation);
+            proximo_recebimento_data.startAnimation(fadeInAnimation);
+            proximo_recebimento_valor.startAnimation(fadeInAnimation);
+
             score_view.setCompoundDrawablesWithIntrinsicBounds(transferido_drawable, null, null, null);
             score_value.setTextColor(getResources().getColor(R.color.tranferido));
             areceber_text.setText("Recebido");
             proximo_recebimento_data.setTextColor(getResources().getColor(R.color.background_default));
-            proximo_recebimento_valor.setVisibility(View.GONE);
+            proximo_recebimento_valor.setTextColor(getResources().getColor(R.color.background_default));
+
+            animation_chooser = true;
 
 
 
@@ -196,4 +235,6 @@ public class initial_userActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
 }
