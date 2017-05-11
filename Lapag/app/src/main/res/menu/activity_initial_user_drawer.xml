@@ -16,10 +16,6 @@
             android:id="@+id/nav_slideshow"
             android:icon="@android:drawable/sym_action_email"
             android:title="Fale conosco" />
-        <item
-            android:id="@+id/nav_manage"
-            android:icon="?android:attr/listChoiceIndicatorMultiple"
-            android:title="Serviços" />
     </group>
 
 </menu>

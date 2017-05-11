@@ -105,9 +105,6 @@ public class initial_userActivity extends AppCompatActivity
             button_areceber.setBackgroundResource(R.drawable.button_rounded_corner_areceber);
             button_areceber.setTextColor(getResources().getColor(R.color.white));
             button_entradas.setBackgroundResource(R.drawable.not_clicked_button);
-            button_recebidas.setBackgroundResource(R.drawable.not_clicked_button);
-            button_entradas.setTextColor(getResources().getColor(R.color.faturado));
-            button_recebidas.setTextColor(getResources().getColor(R.color.tranferido));
             // quando clicar no a recebido rodar função para atualizar valores
             score_view.setCompoundDrawablesWithIntrinsicBounds(areceber_drawable, null, null, null);
             areceber_text.setText("À receber");
@@ -131,6 +128,9 @@ public class initial_userActivity extends AppCompatActivity
 
             Drawable areceber_drawable = getResources().getDrawable(R.drawable.areceber);
 
+            button_recebidas.setBackgroundResource(R.drawable.not_clicked_button);
+            button_entradas.setTextColor(getResources().getColor(R.color.faturado));
+            button_recebidas.setTextColor(getResources().getColor(R.color.tranferido));
             button_entradas.setBackgroundResource(R.drawable.button_rounded_corner);
             button_entradas.setTextColor(getResources().getColor(R.color.white));
             button_areceber.setBackgroundResource(R.drawable.not_clicked_button);
@@ -227,10 +227,7 @@ public class initial_userActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_slideshow) {
 
-        } else if (id == R.id.nav_manage) {
-
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
