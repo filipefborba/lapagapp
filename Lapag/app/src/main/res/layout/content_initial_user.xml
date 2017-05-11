@@ -14,11 +14,7 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
-        android:layout_height="550dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:weightSum="1"
         app:layout_constraintHorizontal_bias="0.0"
@@ -30,19 +26,18 @@
             android:id="@+id/score_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
             android:layout_marginEnd="0dp"
             android:layout_marginLeft="0dp"
             android:layout_marginRight="0dp"
             android:layout_marginStart="0dp"
             android:layout_marginTop="0dp"
             android:autoText="false"
-            android:background="@drawable/rounded_corner"
+            android:background="@color/areceber"
             android:clickable="true"
             android:drawableLeft="@drawable/areceber"
             android:drawablePadding="6dp"
             android:paddingBottom="0dp"
-            android:textColor="@color/areceber"
+            android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -64,7 +59,7 @@
         android:layout_marginTop="8dp"
         android:fontFamily="sans-serif"
         android:text="R$200,33"
-        android:textColor="@color/areceber"
+        android:textColor="@color/background_default"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
@@ -79,38 +74,40 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="À receber"
+        android:textColor="@color/background_default"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintLeft_toLeftOf="@+id/linearLayout"
         app:layout_constraintRight_toRightOf="@+id/linearLayout"
         app:layout_constraintTop_toTopOf="@+id/score"
-        app:layout_constraintVertical_bias="0.041"
-        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        app:layout_constraintVertical_bias="0.347" />
 
     <TextView
         android:id="@+id/proximo_recebimento_valor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="63dp"
         android:text="R$110,65"
-        android:textColor="@color/areceber"
+        android:textColor="@color/background_default"
         android:textSize="18sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+        app:layout_constraintLeft_toLeftOf="@+id/linearLayout"
         app:layout_constraintRight_toRightOf="@+id/linearLayout"
         app:layout_constraintTop_toTopOf="@+id/score"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="@+id/linearLayout"
-        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintVertical_bias="0.002"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        app:layout_constraintVertical_bias="0.002" />
 
     <TextView
         android:id="@+id/proximo_recebimento_data"
@@ -122,14 +119,14 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="86dp"
         android:text="Próximo recebimento 09/02"
-        android:textColor="@color/default_font"
+        android:textColor="@color/white"
         app:layout_constraintLeft_toLeftOf="@+id/linearLayout"
         app:layout_constraintRight_toRightOf="@+id/linearLayout"
         app:layout_constraintTop_toTopOf="@+id/score" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
@@ -139,21 +136,14 @@
         android:background="@drawable/rounded_corner"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="@+id/linearLayout"
         app:layout_constraintRight_toRightOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.113"
-        app:layout_constraintTop_toBottomOf="@+id/proximo_recebimento_data">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.557"
@@ -211,7 +201,7 @@
             <ScrollView
                 android:id="@+id/scroll_view_list"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="300dp"
                 android:background="@drawable/rounded_corner"
                 tools:layout_editor_absoluteX="8dp"
                 tools:layout_editor_absoluteY="8dp">
@@ -231,7 +221,7 @@
                         android:layout_margin="5dp"
                         android:padding="5dp"
                         android:text="Gabriel Moreira                                 R$50,21"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -241,67 +231,97 @@
                         android:layout_margin="5dp"
                         android:padding="5dp"
                         android:text="Borba                                                  R$120,37"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/textView265"
+                        android:id="@+id/textView25"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:padding="5dp"
-                        android:text="Martim                                                R$71,94"
-                        android:textSize="18sp"
+                        android:text="Borba                                                  R$120,37"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/textView265"
+                        android:id="@+id/textView25"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:padding="5dp"
-                        android:text="Martim                                                R$71,94"
-                        android:textSize="18sp"
+                        android:text="Borba                                                  R$120,37"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/textView265"
+                        android:id="@+id/textView25"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:padding="5dp"
-                        android:text="Martim                                                R$71,94"
-                        android:textSize="18sp"
+                        android:text="Borba                                                  R$120,37"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/textView265"
+                        android:id="@+id/textView25"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:padding="5dp"
-                        android:text="Martim                                                R$71,94"
-                        android:textSize="18sp"
+                        android:text="Borba                                                  R$120,37"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/textView265"
+                        android:id="@+id/textView25"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:padding="5dp"
-                        android:text="Martim                                                R$71,94"
-                        android:textSize="18sp"
+                        android:text="Borba                                                  R$120,37"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/textView265"
+                        android:id="@+id/textView25"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:padding="5dp"
-                        android:text="Martim                                                R$71,94"
-                        android:textSize="18sp"
+                        android:text="Borba                                                  R$120,37"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textView25"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:padding="5dp"
+                        android:text="Borba                                                  R$120,37"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textView25"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:padding="5dp"
+                        android:text="Borba                                                  R$120,37"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textView25"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:padding="5dp"
+                        android:text="helloooo"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
 
 

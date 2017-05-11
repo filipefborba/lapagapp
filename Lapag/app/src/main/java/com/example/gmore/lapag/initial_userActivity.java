@@ -110,10 +110,11 @@ public class initial_userActivity extends AppCompatActivity
             button_recebidas.setTextColor(getResources().getColor(R.color.tranferido));
             // quando clicar no a recebido rodar função para atualizar valores
             score_view.setCompoundDrawablesWithIntrinsicBounds(areceber_drawable, null, null, null);
-            score_value.setTextColor(getResources().getColor(R.color.areceber));
             areceber_text.setText("À receber");
-            proximo_recebimento_valor.setTextColor(getResources().getColor(R.color.default_font));
-            proximo_recebimento_data.setTextColor(getResources().getColor(R.color.default_font));
+            score_view.setBackgroundColor(getResources().getColor(R.color.areceber));
+
+            proximo_recebimento_data.setVisibility(View.VISIBLE);
+            proximo_recebimento_valor.setVisibility(View.VISIBLE);
             animation_chooser = false;
 
 
@@ -138,15 +139,16 @@ public class initial_userActivity extends AppCompatActivity
             button_recebidas.setTextColor(getResources().getColor(R.color.tranferido));
             // quando clicar nas entradas rodar função para atualizar valores
             score_view.setCompoundDrawablesWithIntrinsicBounds(areceber_drawable, null, null, null);
-            score_value.setTextColor(getResources().getColor(R.color.areceber));
+            score_view.setBackgroundColor(getResources().getColor(R.color.areceber));
             areceber_text.setText("À receber");
-            proximo_recebimento_data.setTextColor(getResources().getColor(R.color.default_font));
-            proximo_recebimento_valor.setTextColor(getResources().getColor(R.color.default_font));
+            proximo_recebimento_data.setVisibility(View.VISIBLE);
+            proximo_recebimento_valor.setVisibility(View.VISIBLE);
 
             animation_chooser = false;
 
         }
         if (v.getId() == R.id.button_recebidas) {
+
             Drawable transferido_drawable = getResources().getDrawable(R.drawable.transferido);
 
             button_recebidas.setBackgroundResource(R.drawable.button_rounded_corner_transferido);
@@ -156,19 +158,21 @@ public class initial_userActivity extends AppCompatActivity
             button_entradas.setTextColor(getResources().getColor(R.color.faturado));
             button_areceber.setTextColor(getResources().getColor(R.color.areceber));
 
+
             // quando clicar no recebidas rodar função para atualizar valores
             //animação
             score_view.startAnimation(fadeInAnimation);
             score_value.startAnimation(fadeInAnimation);
             areceber_text.startAnimation(fadeInAnimation);
-            proximo_recebimento_data.startAnimation(fadeInAnimation);
-            proximo_recebimento_valor.startAnimation(fadeInAnimation);
 
+            proximo_recebimento_data.setVisibility(View.GONE);
+
+            proximo_recebimento_valor.setVisibility(View.GONE);
             score_view.setCompoundDrawablesWithIntrinsicBounds(transferido_drawable, null, null, null);
-            score_value.setTextColor(getResources().getColor(R.color.tranferido));
+            score_view.setBackgroundColor(getResources().getColor(R.color.tranferido));
             areceber_text.setText("Recebido");
-            proximo_recebimento_data.setTextColor(getResources().getColor(R.color.background_default));
-            proximo_recebimento_valor.setTextColor(getResources().getColor(R.color.background_default));
+
+
 
             animation_chooser = true;
 
