@@ -34,6 +34,7 @@ public class initial_userActivity extends AppCompatActivity
     private TextView proximo_recebimento_valor;
     private TextView proximo_recebimento_data;
     private boolean animation_chooser;
+    private MenuItem initial;
 
 
 
@@ -105,7 +106,9 @@ public class initial_userActivity extends AppCompatActivity
             button_areceber.setBackgroundResource(R.drawable.button_rounded_corner_areceber);
             button_areceber.setTextColor(getResources().getColor(R.color.white));
             button_entradas.setBackgroundResource(R.drawable.not_clicked_button);
-            // quando clicar no a recebido rodar função para atualizar valores
+            button_entradas.setTextColor(getResources().getColor(R.color.faturado));
+            button_recebidas.setBackgroundResource(R.drawable.not_clicked_button);
+            button_recebidas.setTextColor(getResources().getColor(R.color.tranferido));
             score_view.setCompoundDrawablesWithIntrinsicBounds(areceber_drawable, null, null, null);
             areceber_text.setText("À receber");
             score_view.setBackgroundColor(getResources().getColor(R.color.areceber));
@@ -157,8 +160,6 @@ public class initial_userActivity extends AppCompatActivity
             button_areceber.setBackgroundResource(R.drawable.not_clicked_button);
             button_entradas.setTextColor(getResources().getColor(R.color.faturado));
             button_areceber.setTextColor(getResources().getColor(R.color.areceber));
-
-
             // quando clicar no recebidas rodar função para atualizar valores
             //animação
             score_view.startAnimation(fadeInAnimation);
@@ -194,6 +195,8 @@ public class initial_userActivity extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+
+        //initial.setEnabled(true);
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.initial_user, menu);
         return true;
@@ -201,6 +204,7 @@ public class initial_userActivity extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
@@ -218,14 +222,16 @@ public class initial_userActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
+
+
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_pag) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_cale) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nave_fale) {
 
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
