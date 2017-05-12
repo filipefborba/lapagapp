@@ -12,7 +12,7 @@
 
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/linearLayoulsdkftt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -22,285 +22,274 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/score_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="0dp"
-            android:layout_marginLeft="0dp"
-            android:layout_marginRight="0dp"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="0dp"
-            android:autoText="false"
-            android:background="@color/areceber"
-            android:clickable="true"
-            android:drawableLeft="@drawable/areceber"
-            android:drawablePadding="6dp"
-            android:paddingBottom="0dp"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/score"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="sans-serif"
-        android:text="R$200,33"
-        android:textColor="@color/background_default"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintLeft_toLeftOf="@+id/linearLayout"
-        app:layout_constraintRight_toRightOf="@+id/linearLayout"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.015" />
-
-    <TextView
-        android:id="@+id/areceber_texto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="À receber"
-        android:textColor="@color/background_default"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintLeft_toLeftOf="@+id/linearLayout"
-        app:layout_constraintRight_toRightOf="@+id/linearLayout"
-        app:layout_constraintTop_toTopOf="@+id/score"
-        app:layout_constraintVertical_bias="0.347" />
-
-    <TextView
-        android:id="@+id/proximo_recebimento_valor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="63dp"
-        android:text="R$110,65"
-        android:textColor="@color/background_default"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
-        app:layout_constraintLeft_toLeftOf="@+id/linearLayout"
-        app:layout_constraintRight_toRightOf="@+id/linearLayout"
-        app:layout_constraintTop_toTopOf="@+id/score"
-        app:layout_constraintVertical_bias="0.002" />
-
-    <TextView
-        android:id="@+id/proximo_recebimento_data"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="86dp"
-        android:text="Próximo recebimento 09/02"
-        android:textColor="@color/white"
-        app:layout_constraintLeft_toLeftOf="@+id/linearLayout"
-        app:layout_constraintRight_toRightOf="@+id/linearLayout"
-        app:layout_constraintTop_toTopOf="@+id/score" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/rounded_corner"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="@+id/linearLayout"
-        app:layout_constraintRight_toRightOf="@+id/linearLayout"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.0">
-
-        <LinearLayout
+        <RelativeLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.557"
+            android:orientation="vertical"
+            android:weightSum="1"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="@+id/linearLayout"
-            app:layout_constraintTop_toTopOf="@+id/linearLayout"
-            app:layout_constraintVertical_bias="0.337">
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <Button
-                android:id="@+id/areceber_button"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/score_view"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="7993655.50"
-                android:background="@drawable/not_clicked_button"
-                android:fadingEdge="horizontal"
+                android:layout_marginEnd="0dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:autoText="false"
+                android:background="@color/areceber"
+                android:clickable="true"
+                android:drawableLeft="@drawable/areceber"
+                android:drawablePadding="6dp"
+                android:paddingBottom="0dp"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/score"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="sans-serif"
+                android:text="R$200,33"
+                android:textAlignment="center"
+                android:textColor="@color/background_default"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                app:layout_constraintVertical_bias="0.015" />
+
+            <TextView
+                android:id="@+id/proximo_recebimento_valor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="63dp"
+                android:text="R$110,65"
+                android:textAlignment="center"
+                android:textColor="@color/background_default"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="@+id/score"
+                app:layout_constraintVertical_bias="0.002" />
+
+            <TextView
+                android:id="@+id/proximo_recebimento_data"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="86dp"
+                android:text="Próximo recebimento 09/02"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                app:layout_constraintTop_toTopOf="@+id/score" />
+
+            <TextView
+                android:id="@+id/areceber_texto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/score"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
                 android:text="À receber"
-                android:textAllCaps="false"
-                android:textColor="@color/areceber"
-                tools:layout_editor_absoluteX="28dp"
-                tools:layout_editor_absoluteY="163dp" />
+                android:textAlignment="center"
+                android:textColor="@color/background_default"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="@+id/score"
+                app:layout_constraintVertical_bias="0.347" />
 
-            <Button
-                android:id="@+id/button_entradas"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="6032258"
-                android:background="@drawable/not_clicked_button"
-                android:text="Entradas"
-                android:textAllCaps="false"
-                android:textColor="@color/faturado"
-                tools:layout_editor_absoluteX="123dp"
-                tools:layout_editor_absoluteY="163dp" />
 
-            <Button
-                android:id="@+id/button_recebidas"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="5070511.50"
-                android:background="@drawable/not_clicked_button"
-                android:text="Recebidas"
-                android:textAllCaps="false"
-                android:textColor="@color/tranferido"
-                tools:layout_editor_absoluteX="211dp"
-                tools:layout_editor_absoluteY="163dp" />
-
-        </LinearLayout>
+        </RelativeLayout>
 
         <LinearLayout
+            android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/rounded_corner"
             android:orientation="vertical"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="8dp">
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@+id/linearLayout"
+            app:layout_constraintRight_toRightOf="@+id/linearLayout"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            app:layout_constraintVertical_bias="0.0">
 
-            <ListView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <ScrollView
-                android:id="@+id/scroll_view_list"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0.557"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="@+id/linearLayout"
+                app:layout_constraintTop_toTopOf="@+id/linearLayout"
+                app:layout_constraintVertical_bias="0.337">
+
+                <Button
+                    android:id="@+id/areceber_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="7993655.50"
+                    android:background="@drawable/not_clicked_button"
+                    android:fadingEdge="horizontal"
+                    android:text="À receber"
+                    android:textAllCaps="false"
+                    android:textColor="@color/areceber"
+                    tools:layout_editor_absoluteX="28dp"
+                    tools:layout_editor_absoluteY="163dp" />
+
+                <Button
+                    android:id="@+id/button_entradas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6032258"
+                    android:background="@drawable/not_clicked_button"
+                    android:text="Entradas"
+                    android:textAllCaps="false"
+                    android:textColor="@color/faturado"
+                    tools:layout_editor_absoluteX="123dp"
+                    tools:layout_editor_absoluteY="163dp" />
+
+                <Button
+                    android:id="@+id/button_recebidas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5070511.50"
+                    android:background="@drawable/not_clicked_button"
+                    android:text="Recebidas"
+                    android:textAllCaps="false"
+                    android:textColor="@color/tranferido"
+                    tools:layout_editor_absoluteX="211dp"
+                    tools:layout_editor_absoluteY="163dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fillViewport="true"
+                android:orientation="vertical"
+                android:scrollbars="vertical"
                 tools:layout_editor_absoluteX="8dp"
                 tools:layout_editor_absoluteY="8dp">
 
-                <LinearLayout
-                    android:id="@+id/table"
+                <ScrollView
+                    android:id="@+id/scroll_view_list"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent">
 
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/textView24"
+                    <LinearLayout
+                        android:id="@+id/table"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:padding="5dp"
-                        android:text="Gabriel Moreira                                 R$50,21"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+                        android:animateLayoutChanges="true"
+                        android:isScrollContainer="true"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/textView256"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:padding="5dp"
-                        android:text="Borba                                                  R$120,37"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/textView24"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:padding="5dp"
+                            android:text="Gabriel Moreira                                 R$50,21"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/textView2551"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:padding="5dp"
-                        android:text="Borba                                                  R$120,37"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/textView256"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:padding="5dp"
+                            android:text="Borba                                                  R$120,37"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/textView2521"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:padding="5dp"
-                        android:text="Borba                                                  R$120,37"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/textView2551"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:padding="5dp"
+                            android:text="Borba                                                  R$120,37"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/textView255"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:padding="5dp"
-                        android:text="Borba                                                  R$120,37"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/textView2521"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:padding="5dp"
+                            android:text="Borba                                                  R$120,37"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/textView2515"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:padding="5dp"
-                        android:text="Borba                                                  R$120,37"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/textView2515"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:padding="5dp"
+                            android:text="Borba                                                  R$120,37"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/textView25"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:padding="5dp"
-                        android:text="Borba                                                  R$120,37"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/textView2j4155"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:padding="5dp"
+                            android:text="helloooo"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/textView24155"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:padding="5dp"
-                        android:text="helloooo"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/textView24155"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:padding="5dp"
+                            android:text="helloooo"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
 
-                </LinearLayout>
-            </ScrollView>
+                    </LinearLayout>
+                </ScrollView>
+            </LinearLayout>
+
         </LinearLayout>
+</LinearLayout>
 
-    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
