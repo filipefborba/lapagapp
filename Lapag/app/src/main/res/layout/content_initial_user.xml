@@ -212,76 +212,203 @@
                         android:animateLayoutChanges="true"
                         android:isScrollContainer="true"
                         android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/textView24"
-                            android:layout_width="match_parent"
+                        <TableLayout
+                            android:id="@+id/tablelayout"
                             android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
-                            android:padding="5dp"
-                            android:text="Gabriel Moreira                                 R$50,21"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
+                            android:layout_width="fill_parent"
+                            android:paddingRight="2dip" >
 
-                        <TextView
-                            android:id="@+id/textView256"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
-                            android:padding="5dp"
-                            android:text="Borba                                                  R$120,37"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
+                            <TableRow>
 
-                        <TextView
-                            android:id="@+id/textView2551"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
-                            android:padding="5dp"
-                            android:text="Borba                                                  R$120,37"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
+                                <TextView
+                                    android:layout_margin="5dp"
+                                    android:layout_weight="1"
+                                    android:padding="7dp"
+                                    android:text="09/06"
+                                    android:textAlignment="textStart"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
 
-                        <TextView
-                            android:id="@+id/textView2521"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
-                            android:padding="5dp"
-                            android:text="Borba                                                  R$120,37"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
 
-                        <TextView
-                            android:id="@+id/textView2515"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
-                            android:padding="5dp"
-                            android:text="Borba                                                  R$120,37"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
+                                <TextView
+                                    android:layout_margin="5dp"
+                                    android:layout_weight="1"
+                                    android:padding="7dp"
+                                    android:text="Gabriel"
+                                    android:textAlignment="center"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
 
-                        <TextView
-                            android:id="@+id/textView2j4155"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
-                            android:padding="5dp"
-                            android:text="helloooo"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
+                                <ImageView
+                                    android:id="@+id/imageView4"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:scaleType="centerInside"
+                                    app:srcCompat="@drawable/b_vermelha" />
 
-                        <TextView
-                            android:id="@+id/textView24155"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
-                            android:padding="5dp"
-                            android:text="helloooo"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
+                                <TextView
+                                    android:layout_margin="5dp"
+                                    android:layout_weight="1"
+                                    android:padding="7dp"
+                                    android:text="R$500,32"
+                                    android:textAlignment="center"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+
+                            </TableRow>
+
+                            <TableRow>
+
+                                <TextView
+                                    android:layout_margin="5dp"
+                                    android:layout_weight="1"
+                                    android:padding="7dp"
+                                    android:text="09/06"
+                                    android:textAlignment="textStart"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+
+                                <TextView
+                                    android:layout_margin="5dp"
+                                    android:layout_weight="1"
+                                    android:padding="7dp"
+                                    android:text="Gabriel"
+                                    android:textAlignment="center"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <ImageView
+                                    android:id="@+id/imageView4"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:scaleType="centerInside"
+                                    app:srcCompat="@drawable/b_vermelha" />
+
+                                <TextView
+                                    android:layout_margin="5dp"
+                                    android:layout_weight="1"
+                                    android:padding="7dp"
+                                    android:text="R$500,32"
+                                    android:textAlignment="center"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+                            </TableRow>
+                            <TableRow>
+
+                                <TextView
+                                    android:layout_margin="5dp"
+                                    android:layout_weight="1"
+                                    android:padding="7dp"
+                                    android:text="09/06"
+                                    android:textAlignment="textStart"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+
+                                <TextView
+                                    android:layout_margin="5dp"
+                                    android:layout_weight="1"
+                                    android:padding="7dp"
+                                    android:text="Gabriel"
+                                    android:textAlignment="center"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <ImageView
+                                    android:id="@+id/imageView4"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:scaleType="centerInside"
+                                    app:srcCompat="@drawable/b_vermelha" />
+
+                                <TextView
+                                    android:layout_margin="5dp"
+                                    android:layout_weight="1"
+                                    android:padding="7dp"
+                                    android:text="R$500,32"
+                                    android:textAlignment="center"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+                            </TableRow>
+                            <TableRow>
+
+                                <TextView
+                                    android:layout_margin="5dp"
+                                    android:layout_weight="1"
+                                    android:padding="7dp"
+                                    android:text="09/06"
+                                    android:textAlignment="textStart"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+
+                                <TextView
+                                    android:layout_margin="5dp"
+                                    android:layout_weight="1"
+                                    android:padding="7dp"
+                                    android:text="Gabriel"
+                                    android:textAlignment="center"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <ImageView
+                                    android:id="@+id/imageView4"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:scaleType="centerInside"
+                                    app:srcCompat="@drawable/b_vermelha" />
+
+                                <TextView
+                                    android:layout_margin="5dp"
+                                    android:layout_weight="1"
+                                    android:padding="7dp"
+                                    android:text="R$500,32"
+                                    android:textAlignment="center"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+                            </TableRow>
+                            <TableRow>
+
+                                <TextView
+                                    android:layout_margin="5dp"
+                                    android:layout_weight="1"
+                                    android:padding="7dp"
+                                    android:text="09/06"
+                                    android:textAlignment="textStart"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+
+                                <TextView
+                                    android:layout_margin="5dp"
+                                    android:layout_weight="1"
+                                    android:padding="7dp"
+                                    android:text="Gabriel"
+                                    android:textAlignment="center"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <ImageView
+                                    android:id="@+id/imageView4"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:scaleType="centerInside"
+                                    app:srcCompat="@drawable/b_vermelha" />
+
+                                <TextView
+                                    android:layout_margin="5dp"
+                                    android:layout_weight="1"
+                                    android:padding="7dp"
+                                    android:text="R$500,32"
+                                    android:textAlignment="center"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+                            </TableRow>
+
+
+                        </TableLayout>
 
 
                     </LinearLayout>
