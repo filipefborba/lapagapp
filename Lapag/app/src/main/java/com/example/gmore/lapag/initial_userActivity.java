@@ -107,10 +107,8 @@ public class initial_userActivity extends AppCompatActivity
             button_areceber.setTextColor(getResources().getColor(R.color.white));
             button_entradas.setBackgroundResource(R.drawable.not_clicked_button);
             button_entradas.setTextColor(getResources().getColor(R.color.faturado));
-            //button_recebidas.setBackgroundColor(getResources().getColor(R.color.background_default));
             button_recebidas.setBackgroundResource(R.drawable.not_clicked_button);
             button_recebidas.setTextColor(getResources().getColor(R.color.tranferido));
-            // quando clicar no a recebido rodar função para atualizar valores
             score_view.setCompoundDrawablesWithIntrinsicBounds(areceber_drawable, null, null, null);
             areceber_text.setText("À receber");
             score_view.setBackgroundColor(getResources().getColor(R.color.areceber));
@@ -162,8 +160,6 @@ public class initial_userActivity extends AppCompatActivity
             button_areceber.setBackgroundResource(R.drawable.not_clicked_button);
             button_entradas.setTextColor(getResources().getColor(R.color.faturado));
             button_areceber.setTextColor(getResources().getColor(R.color.areceber));
-
-
             // quando clicar no recebidas rodar função para atualizar valores
             //animação
             score_view.startAnimation(fadeInAnimation);
