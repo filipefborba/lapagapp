@@ -10,6 +10,5 @@
     <color name="white">#ffffff</color>
     <color name="background_default">#fafafa</color>
     <color name="default_font">#727272</color>
-
     <color name="black_overlay">#66000000</color>
 </resources>

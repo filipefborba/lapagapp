@@ -27,6 +27,15 @@
             android:name=".initial_userActivity"
             android:label="@string/title_activity_initial_user"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".calendarActivity"
+            android:label="@string/title_activity_calendar"
+            android:parentActivityName=".initial_userActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.gmore.lapag.initial_userActivity" />
+        </activity>
     </application>
 
 </manifest>

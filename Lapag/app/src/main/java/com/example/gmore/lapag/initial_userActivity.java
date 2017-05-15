@@ -1,6 +1,7 @@
 package com.example.gmore.lapag;
 
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -11,7 +12,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -214,15 +214,13 @@ public class initial_userActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-
-
-        // Handle navigation view item clicks here.
         int id = item.getItemId();
 
         if (id == R.id.nav_pag) {
             // Handle the camera action
         } else if (id == R.id.nav_cale) {
-
+            Intent intent = new Intent(this, calendarActivity.class);
+            this.startActivity (intent);
         } else if (id == R.id.nave_fale) {
 
         }
@@ -230,8 +228,4 @@ public class initial_userActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
-
-
-
 }
