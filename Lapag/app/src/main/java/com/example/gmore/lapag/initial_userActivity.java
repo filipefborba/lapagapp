@@ -1,6 +1,7 @@
 package com.example.gmore.lapag;
 
 
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
@@ -15,8 +16,7 @@ import android.view.MenuItem;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
-
-import android.widget.ImageView;
+import android.widget.TableLayout;
 import android.widget.TextView;
 
 
@@ -34,7 +34,7 @@ public class initial_userActivity extends AppCompatActivity
     private TextView proximo_recebimento_valor;
     private TextView proximo_recebimento_data;
     private boolean animation_chooser;
-    private MenuItem initial;
+    private TableLayout tableLayout;
 
 
 
@@ -46,21 +46,38 @@ public class initial_userActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //Definir fontes
+        Typeface dosis_bold = Typeface.createFromAsset(getAssets(), "Dosis-Bold.ttf");
+        Typeface dosis_extra_bold = Typeface.createFromAsset(getAssets(), "Dosis-ExtraBold.ttf");
+        Typeface dosis_extra_light = Typeface.createFromAsset(getAssets(), "Dosis-ExtraLight.ttf");
+        Typeface dosis_light = Typeface.createFromAsset(getAssets(), "Dosis-Light.ttf");
+        Typeface dosis_medium = Typeface.createFromAsset(getAssets(), "Dosis-Medium.ttf");
+        Typeface dosis_regular = Typeface.createFromAsset(getAssets(), "Dosis-Regular.ttf");
+        Typeface dosis_semi_bold= Typeface.createFromAsset(getAssets(), "Dosis-SemiBold.ttf");
 
         score_view = (TextView) findViewById(R.id.score_view);
         score_value = (TextView) findViewById(R.id.score);
         areceber_text = (TextView) findViewById(R.id.areceber_texto);
         proximo_recebimento_valor = (TextView) findViewById(R.id.proximo_recebimento_valor);
         proximo_recebimento_data = (TextView) findViewById(R.id.proximo_recebimento_data);
+        tableLayout = (TableLayout) findViewById(R.id.tablelayout);
 
+        score_value.setTypeface(dosis_bold);
+        areceber_text.setTypeface(dosis_medium);
+        proximo_recebimento_valor.setTypeface(dosis_semi_bold);
+        proximo_recebimento_data.setTypeface(dosis_medium);
+        // mais fontes aqui
 
 
 
         button_areceber = (Button) findViewById(R.id.areceber_button);
+        button_areceber.setTypeface(dosis_bold);
         button_areceber.setOnClickListener(this);
         button_entradas = (Button) findViewById(R.id.button_entradas);
+        button_entradas.setTypeface(dosis_bold);
         button_entradas.setOnClickListener(this);
         button_recebidas = (Button) findViewById(R.id.button_recebidas);
+        button_recebidas.setTypeface(dosis_bold);
         button_recebidas.setOnClickListener(this);
 
 
@@ -238,6 +255,8 @@ public class initial_userActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
 
 
 }
