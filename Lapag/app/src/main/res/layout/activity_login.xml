@@ -10,7 +10,6 @@
 
     <!-- Login progress -->
 
-
     <ImageView
         android:id="@+id/lapag_image"
         android:layout_width="match_parent"
@@ -18,7 +17,7 @@
         android:layout_margin="0dp"
         android:padding="0dp"
         android:paddingTop="0dp"
-        app:srcCompat="@drawable/lapag2" />
+        app:srcCompat="@drawable/logo_white" />
 
     <ProgressBar
         android:id="@+id/login_progress"
@@ -47,19 +46,24 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="0dp"
                 android:layout_weight="1.38"
                 android:padding="0dp">
 
                 <AutoCompleteTextView
                     android:id="@+id/email"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
+                    android:layout_height="55dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/rectangle"
                     android:hint="@string/prompt_email"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
-                    android:padding="20dp"
+                    android:padding="10dp"
                     android:singleLine="true" />
 
             </android.support.design.widget.TextInputLayout>
@@ -67,21 +71,25 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_marginTop="20dp"
                 android:padding="0dp">
 
                 <EditText
                     android:id="@+id/password"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
+                    android:layout_height="55dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/rectangle"
                     android:hint="Senha"
                     android:imeActionId="@+id/login"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified"
                     android:inputType="text|textPassword"
                     android:maxLines="1"
-                    android:padding="20dp"
+                    android:padding="10dp"
                     android:singleLine="true" />
 
             </android.support.design.widget.TextInputLayout>
@@ -89,19 +97,87 @@
             <Button
                 android:id="@+id/email_sign_in_button"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="45dp"
-                android:layout_marginLeft="0dp"
-                android:layout_marginRight="0dp"
-                android:layout_marginTop="0dp"
+                android:layout_height="60dp"
+                android:layout_marginBottom="0dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="60dp"
                 android:background="@drawable/button_rounded_corner"
                 android:fontFamily="sans-serif"
                 android:text="Entrar"
                 android:textAllCaps="false"
                 android:textColor="@android:color/background_light"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginBottom="0dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="10dp"
+                android:maxLines="2"
+                android:padding="10dp"
+                android:visibility="invisible"
+                android:textSize="16sp"></TextView>
+
+
+            <LinearLayout
+                android:visibility="invisible"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="0dp"
+                android:orientation="horizontal">
+
+                <View
+                    android:id="@+id/B_Divider"
+                    android:layout_width="130dp"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="18dp"
+                    android:background="#d9d9d9" />
+
+                <TextView
+                    android:id="@+id/text5"
+                    android:layout_width="20dp"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_weight="1"
+                    android:autoLink="web"
+                    android:maxLines="1"
+                    android:paddingTop="8dp"
+                    android:paddingLeft="14dp"
+                    android:singleLine="true"
+                    android:text="OU"
+                    android:textSize="18sp"></TextView>
+
+                <View
+                    android:id="@+id/A_Divider"
+                    android:layout_width="100dp"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_marginTop="18dp"
+                    android:background="#d9d9d9" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/firstDivider"
+                android:layout_width="fill_parent"
+                android:layout_height="2dp"
+                android:visibility="invisible"
+                android:background="#d9d9d9" />
+
         </LinearLayout>
+
+
     </ScrollView>
 </LinearLayout>
