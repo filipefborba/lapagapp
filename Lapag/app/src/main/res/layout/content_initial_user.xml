@@ -162,6 +162,7 @@
                     android:text="À receber"
                     android:textAllCaps="false"
                     android:textColor="@color/areceber"
+                    android:textSize="16sp"
                     tools:layout_editor_absoluteX="28dp"
                     tools:layout_editor_absoluteY="163dp" />
 
@@ -174,6 +175,7 @@
                     android:text="Entradas"
                     android:textAllCaps="false"
                     android:textColor="@color/faturado"
+                    android:textSize="16sp"
                     tools:layout_editor_absoluteX="123dp"
                     tools:layout_editor_absoluteY="163dp" />
 
@@ -186,6 +188,7 @@
                     android:text="Recebidas"
                     android:textAllCaps="false"
                     android:textColor="@color/tranferido"
+                    android:textSize="16sp"
                     tools:layout_editor_absoluteX="211dp"
                     tools:layout_editor_absoluteY="163dp" />
 
