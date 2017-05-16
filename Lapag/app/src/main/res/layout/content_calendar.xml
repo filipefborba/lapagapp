@@ -13,7 +13,6 @@
         android:paddingRight="10dp"
         android:paddingLeft="10dp"
         android:layout_height="400dp"
-        app:compactCalendarTargetHeight="400dp"
         app:compactCalendarTextSize="12sp"
         app:compactCalendarBackgroundColor="@color/areceber"
         app:compactCalendarTextColor="#fff"
