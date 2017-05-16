@@ -21,9 +21,11 @@ import java.util.Locale;
 
 public class calendarActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
+    final Locale myLocale = new Locale("pt", "BR");
+
     private CompactCalendarView compactCalendar;
-    private SimpleDateFormat dateFormatMonth = new SimpleDateFormat("MMMM- yyyy", Locale.getDefault());
-    private SimpleDateFormat dateFormatForDisplaying = new SimpleDateFormat("dd MMM yyyy", Locale.getDefault());
+    private SimpleDateFormat dateFormatMonth = new SimpleDateFormat("MMMM yyyy", myLocale);
+    private SimpleDateFormat dateFormatForDisplaying = new SimpleDateFormat("dd MMMM yyyy", myLocale);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
