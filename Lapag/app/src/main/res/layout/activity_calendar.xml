@@ -22,4 +22,7 @@
         app:headerLayout="@layout/drawermenuheader"
         app:menu="@menu/drawermenu" />
 
+    <!-- app:compactCalendarTargetHeight: Quanto o calendário ocupa da tela -->
 </android.support.v4.widget.DrawerLayout>
+
+
