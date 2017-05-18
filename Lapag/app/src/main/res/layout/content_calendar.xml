@@ -10,13 +10,71 @@
         android:id="@+id/simpleCalendarView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="40dp"
+        android:dateTextAppearance="@style/TextAppearance.AppCompat"
+        android:elevation="1dp"
         android:focusedMonthDateColor="@color/colorAccent"
-        android:weekSeparatorLineColor="@color/aprovadas"
+        android:maxDate="31/12/2020"
         android:minDate="01/01/2017"
-        android:maxDate="31/12/2020"/>
+        android:unfocusedMonthDateColor="@color/black_overlay"
+        android:weekDayTextAppearance="@style/TextAppearance.AppCompat.Button"
+        android:weekSeparatorLineColor="@color/aprovadas" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        android:orientation="vertical"
+        android:scrollbars="vertical"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/simpleCalendarView">
+
+        <ScrollView
+            android:id="@+id/scroll_view_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/table"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:animateLayoutChanges="true"
+                android:isScrollContainer="true"
+                android:orientation="vertical">
+
+                <TableLayout
+                    android:id="@+id/tabela"
+                    android:layout_height="wrap_content"
+                    android:layout_width="fill_parent">
+
+                    <TableRow>
+                        <TextView
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:padding="7dp"
+                            android:text="Cliente"
+                            android:textColor="@color/colorPrimary"
+                            android:textAlignment="center"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:padding="7dp"
+                            android:text="Valor"
+                            android:textColor="@color/colorPrimary"
+                            android:textAlignment="center"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+                    </TableRow>
+                </TableLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
 
 </RelativeLayout>

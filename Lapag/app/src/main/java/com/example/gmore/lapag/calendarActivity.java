@@ -13,9 +13,16 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.RelativeLayout;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
 import android.widget.Toast;
 import java.util.Locale;
 
@@ -41,9 +48,56 @@ public class calendarActivity extends AppCompatActivity implements NavigationVie
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_calendar);
         setSupportActionBar(toolbar);
 
-
         CalendarView simpleCalendarView = (CalendarView) findViewById(R.id.simpleCalendarView); // get the reference of CalendarView
         simpleCalendarView = (CalendarView) findViewById(R.id.simpleCalendarView); // get the reference of CalendarView
+
+        final TableLayout tableLayout = (TableLayout) findViewById(R.id.tabela);
+
+        for (int i = 0; i < 10; i++) {
+            // Creation row
+            final TableRow tableRow = new TableRow(this);
+            tableRow.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.FILL_PARENT));
+
+            // Creation textView
+            final TextView text1 = new TextView(this);
+            text1.setText("Nome");
+            text1.setTextSize(16);
+            text1.setTypeface(null, Typeface.BOLD);
+            text1.setPadding(7, 7, 7, 7);
+            text1.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 5f));
+            text1.setGravity(Gravity.CENTER_HORIZONTAL);
+
+            // Creation textView
+            final TextView text2 = new TextView(this);
+            text2.setText("Valor");
+            text2.setTextColor(Color.GREEN);
+            text2.setTextSize(16);
+            text2.setTypeface(null, Typeface.BOLD);
+            text2.setPadding(7, 7, 7, 7);
+            text2.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 5f));
+            text2.setGravity(Gravity.CENTER_HORIZONTAL);
+
+            // Creation  button
+//            final Button button = new Button(this);
+//            button.setText("Delete");
+//
+//            button.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 5f));
+//            text.setPadding(7, 7, 7, 7);
+//            text.setGravity(Gravity.CENTER_HORIZONTAL);
+//            button.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    final TableRow parent = (TableRow) v.getParent();
+//                    tableLayout.removeView(parent);
+//                }
+//            });
+
+            tableRow.addView(text1);
+            tableRow.addView(text2);
+            //tableRow.addView(button);
+
+            tableLayout.addView(tableRow);
+        }
 
         // perform setOnDateChangeListener event on CalendarView
         simpleCalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
