@@ -15,7 +15,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CalendarView;
 import android.widget.Toast;
+import java.util.Locale;
 
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.github.sundeepk.compactcalendarview.domain.Event;
@@ -27,13 +29,9 @@ import java.util.TimeZone;
 
 public class calendarActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
+    CalendarView simpleCalendarView;
     final Locale myLocale = new Locale("pt", "BR");
     final TimeZone timeZone = TimeZone.getTimeZone("America/Sao_Paulo");
-
-    private Calendar currentCalender = Calendar.getInstance(myLocale);
-    private CompactCalendarView compactCalendar;
-    private SimpleDateFormat dateFormatMonth = new SimpleDateFormat("MMMM yyyy", myLocale);
-    private SimpleDateFormat dateFormatForDisplaying = new SimpleDateFormat("dd MMMM yyyy", myLocale);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,36 +41,16 @@ public class calendarActivity extends AppCompatActivity implements NavigationVie
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_calendar);
         setSupportActionBar(toolbar);
 
-        compactCalendar = (CompactCalendarView) findViewById(R.id.compactcalendar_view);
-        compactCalendar.setUseThreeLetterAbbreviation(true);
-        compactCalendar.setLocale(timeZone, myLocale);
 
-        final ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(false);
-        actionBar.setTitle(dateFormatMonth.format(compactCalendar.getFirstDayOfCurrentMonth()));
+        CalendarView simpleCalendarView = (CalendarView) findViewById(R.id.simpleCalendarView); // get the reference of CalendarView
+        simpleCalendarView = (CalendarView) findViewById(R.id.simpleCalendarView); // get the reference of CalendarView
 
-        Event ev1 = new Event(Color.RED, 1494902996000L, "Teste 1");
-        compactCalendar.addEvent(ev1);
-
-        Event ev2 = new Event(Color.RED, 1494902996000L, "Teste 2");
-        compactCalendar.addEvent(ev2);
-
-        Event ev3 = new Event(Color.BLUE, 1495075796000L, "Teste 3");
-        compactCalendar.addEvent(ev3);
-
-        Event ev4 = new Event(Color.BLUE, 1495075796000L, "Teste 4");
-        compactCalendar.addEvent(ev4);
-
-        compactCalendar.setListener(new CompactCalendarView.CompactCalendarViewListener() {
+        // perform setOnDateChangeListener event on CalendarView
+        simpleCalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
-            public void onDayClick(Date dateClicked) {
-                actionBar.setTitle(dateFormatForDisplaying.format(dateClicked));
-            }
-
-            @Override
-            public void onMonthScroll(Date firstDayOfNewMonth) {
-                actionBar.setTitle(dateFormatMonth.format(firstDayOfNewMonth));
-
+            public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
+                // display the selected date by using a toast
+                Toast.makeText(getApplicationContext(), dayOfMonth + "/" + month + "/" + year, Toast.LENGTH_LONG).show();
             }
         });
 

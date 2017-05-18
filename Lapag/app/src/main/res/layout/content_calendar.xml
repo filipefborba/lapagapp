@@ -6,19 +6,17 @@
     android:id="@+id/main_content"
     >
 
-    <com.github.sundeepk.compactcalendarview.CompactCalendarView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/compactcalendar_view"
+    <CalendarView
+        android:id="@+id/simpleCalendarView"
         android:layout_width="fill_parent"
-        android:paddingRight="10dp"
-        android:paddingLeft="10dp"
-        android:layout_height="400dp"
-        app:compactCalendarTextSize="12sp"
-        app:compactCalendarBackgroundColor="@color/areceber"
-        app:compactCalendarTextColor="#fff"
-        app:compactCalendarCurrentSelectedDayBackgroundColor="@color/tranferido"
-        app:compactCalendarCurrentDayBackgroundColor="#ab3a84bc"
-        app:compactCalendarMultiEventIndicatorColor="#fff"
-        />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:focusedMonthDateColor="@color/colorAccent"
+        android:weekSeparatorLineColor="@color/aprovadas"
+        android:minDate="01/01/2017"
+        android:maxDate="31/12/2020"/>
 
 </RelativeLayout>
