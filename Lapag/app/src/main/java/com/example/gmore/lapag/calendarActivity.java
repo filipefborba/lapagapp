@@ -60,7 +60,7 @@ public class calendarActivity extends AppCompatActivity implements NavigationVie
 
             // Creation textView
             final TextView text1 = new TextView(this);
-            text1.setText("Nome");
+            text1.setText("Nome" + i);
             text1.setTextSize(16);
             text1.setTypeface(null, Typeface.BOLD);
             text1.setPadding(7, 7, 7, 7);
@@ -69,7 +69,7 @@ public class calendarActivity extends AppCompatActivity implements NavigationVie
 
             // Creation textView
             final TextView text2 = new TextView(this);
-            text2.setText("Valor");
+            text2.setText("R$ " + i);
             text2.setTextColor(Color.GREEN);
             text2.setTextSize(16);
             text2.setTypeface(null, Typeface.BOLD);
