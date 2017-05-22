@@ -36,6 +36,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.gmore.lapag.initial_userActivity" />
         </activity>
+        <activity
+            android:name=".profileActivity"
+            android:label="Perfil"
+            android:parentActivityName=".initial_userActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.gmore.lapag.initial_userActivity" />
+        </activity>
     </application>
 
 </manifest>
