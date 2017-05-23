@@ -85,8 +85,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private ImageView lapag_image;
     private String result;
     private boolean login;
-    private JSONObject finaljson = new JSONObject();
-    private List<Transactions> transactions;
+    public static JSONObject finaljson = new JSONObject();
+    public List<Transactions> transactions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -217,8 +217,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mAuthTask.execute((Void) null);
 
             // Go to another activity
-            Intent intent = new Intent(this, initial_userActivity.class);
-            this.startActivity(intent);
+            //Intent intent = new Intent(this, initial_userActivity.class);
+            //this.startActivity(intent);
 
         }
 
@@ -442,6 +442,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             Log.v("JSON OUTPUT: ", finaljson.toString());
             login = true;
+            Intent intent = new Intent(this, initial_userActivity.class);
+            this.startActivity(intent);
+
         }
         catch (NullPointerException e){
             // do something
@@ -450,17 +453,21 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
 
     public List<Transactions> getTransactions() {
+
+
         List<Transactions> transactions = new ArrayList<Transactions>();
+
         try {
             JSONObject jsn = (JSONObject) finaljson.get("result");
 
             JSONArray transactionsJSON = new JSONArray(jsn.get("transactions").toString());
-
+            int leght = transactionsJSON.length();
             //JSONObject tr;
+            Log.d("LENGHT",String.valueOf(leght));
 
             for (int i = 0; i < transactionsJSON.length(); i++) {
                 JSONObject json_data = transactionsJSON.getJSONObject(i);
-                Log.i(" ENCONTRADA: ", json_data.getString("date_created"));
+                Log.i(" ENCONTRADA: ", json_data.getString("client_name"));
 
                 Transactions objectTransaction = new Transactions();
                 objectTransaction.setData(json_data.getString("date_created"));
@@ -474,10 +481,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         } catch (JSONException e) {
             Log.e("Erro", "Erro no parsing do JSON", e);}
+            Log.e("Erro", finaljson.toString());
 
         return transactions;
     }
 
 }
-
-

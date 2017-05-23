@@ -97,6 +97,7 @@ public class initial_userActivity extends AppCompatActivity
 
 
 
+
         List<Transactions> transactionsList = loginActivity.getTransactions();
         createTransactions(transactionsList);
 
@@ -239,8 +240,8 @@ public class initial_userActivity extends AppCompatActivity
     public void createTransactions(List<Transactions> transactionsList){
         TableLayout.LayoutParams tableParams = new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.FILL_PARENT);
         TableRow.LayoutParams rowParams = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
-        for (int i = 0; i<transactionsList.size(); ++i){
-            Transactions transaction = transactionsList.get(i+1);
+        for (int i = 1; i<transactionsList.size(); ++i){
+            Transactions transaction = transactionsList.get(i);
             TableRow row = new TableRow(this);
             row.setLayoutParams(tableParams);
             TextView textView1 = new TextView(this);
