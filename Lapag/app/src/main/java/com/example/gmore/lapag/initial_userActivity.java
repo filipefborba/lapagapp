@@ -16,11 +16,14 @@ import android.view.MenuItem;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
+import com.example.gmore.lapag.LoginActivity;
 
-
-
+import java.util.List;
 
 
 public class initial_userActivity extends AppCompatActivity
@@ -45,6 +48,7 @@ public class initial_userActivity extends AppCompatActivity
         setContentView(R.layout.activity_initial_user);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
         //Definir fontes
         Typeface dosis_bold = Typeface.createFromAsset(getAssets(), "Dosis-Bold.ttf");
@@ -89,6 +93,13 @@ public class initial_userActivity extends AppCompatActivity
         button_recebidas.setTextColor(getResources().getColor(R.color.tranferido));
 
 
+        LoginActivity loginActivity = new LoginActivity();
+
+
+
+        List<Transactions> transactionsList = loginActivity.getTransactions();
+        createTransactions(transactionsList);
+
 
 
 // Now Set your animation
@@ -104,6 +115,8 @@ public class initial_userActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
 
     }
 
@@ -189,13 +202,7 @@ public class initial_userActivity extends AppCompatActivity
             score_view.setCompoundDrawablesWithIntrinsicBounds(transferido_drawable, null, null, null);
             score_view.setBackgroundColor(getResources().getColor(R.color.tranferido));
             areceber_text.setText("Recebido");
-
-
-
             animation_chooser = true;
-
-
-
 
         }
     }
@@ -227,5 +234,40 @@ public class initial_userActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void createTransactions(List<Transactions> transactionsList){
+        TableLayout.LayoutParams tableParams = new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.FILL_PARENT);
+        TableRow.LayoutParams rowParams = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
+        for (int i = 0; i<transactionsList.size(); ++i){
+            Transactions transaction = transactionsList.get(i+1);
+            TableRow row = new TableRow(this);
+            row.setLayoutParams(tableParams);
+            TextView textView1 = new TextView(this);
+            textView1.setLayoutParams(rowParams);
+            textView1.setText(transaction.getData());
+
+            TextView textView2 = new TextView(this);
+            textView2.setLayoutParams(rowParams);
+            textView2.setText(transactionsList.get(i).getName());
+
+            ImageView imageView = new ImageView(this);
+
+            if (!transaction.getStatus() == true){
+                imageView.setImageResource(R.drawable.b_vermelha);
+            }
+            else{
+                // colocar bola verde
+                imageView.setImageResource(R.drawable.b_vermelha);
+            }
+            imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+
+            TextView textView3 = new TextView(this);
+            textView3.setLayoutParams(rowParams);
+            textView3.setText(transactionsList.get(i).getAmount());
+
+
+
+        }
     }
 }
