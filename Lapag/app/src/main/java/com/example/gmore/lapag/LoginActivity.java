@@ -477,13 +477,15 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 objectTransaction.setTransfer_day(json_data.getString("transfer_day"));
                 objectTransaction.setName(json_data.getString("client_name"));
                 transactions.add(objectTransaction);
+
             }
+            return transactions;
 
         } catch (JSONException e) {
             Log.e("Erro", "Erro no parsing do JSON", e);}
             Log.e("Erro", finaljson.toString());
 
-        return transactions;
+        return null;
     }
 
 }

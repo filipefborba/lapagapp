@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -238,18 +239,22 @@ public class initial_userActivity extends AppCompatActivity
     }
 
     public void createTransactions(List<Transactions> transactionsList){
-        TableLayout.LayoutParams tableParams = new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.FILL_PARENT);
-        TableRow.LayoutParams rowParams = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
-        for (int i = 1; i<transactionsList.size(); ++i){
+        Log.d("ITERATOR", String.valueOf(transactionsList.size()));
+
+        //TableLayout.LayoutParams tableParams = new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.FILL_PARENT);
+        //TableRow.LayoutParams rowParams = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
+        for (int i = 0; i<transactionsList.size(); ++i){
+
             Transactions transaction = transactionsList.get(i);
             TableRow row = new TableRow(this);
-            row.setLayoutParams(tableParams);
+            tableLayout.addView(row);
+            //row.setLayoutParams(tableParams);
             TextView textView1 = new TextView(this);
-            textView1.setLayoutParams(rowParams);
+            //textView1.setLayoutParams(rowParams);
             textView1.setText(transaction.getData());
 
             TextView textView2 = new TextView(this);
-            textView2.setLayoutParams(rowParams);
+            //textView2.setLayoutParams(rowParams);
             textView2.setText(transactionsList.get(i).getName());
 
             ImageView imageView = new ImageView(this);
@@ -264,8 +269,12 @@ public class initial_userActivity extends AppCompatActivity
             imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
 
             TextView textView3 = new TextView(this);
-            textView3.setLayoutParams(rowParams);
+            //textView3.setLayoutParams(rowParams);
             textView3.setText(transactionsList.get(i).getAmount());
+            row.addView(textView1);
+            row.addView(textView2);
+            row.addView(imageView);
+            row.addView(textView3);
 
 
 
