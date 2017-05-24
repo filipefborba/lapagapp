@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutCompat;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -19,6 +20,8 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -239,38 +242,58 @@ public class initial_userActivity extends AppCompatActivity
     }
 
     public void createTransactions(List<Transactions> transactionsList){
+        Typeface dosis_bold = Typeface.createFromAsset(getAssets(), "Dosis-Bold.ttf");
+        Typeface dosis_extra_bold = Typeface.createFromAsset(getAssets(), "Dosis-ExtraBold.ttf");
+        Typeface dosis_extra_light = Typeface.createFromAsset(getAssets(), "Dosis-ExtraLight.ttf");
+        Typeface dosis_light = Typeface.createFromAsset(getAssets(), "Dosis-Light.ttf");
+        Typeface dosis_medium = Typeface.createFromAsset(getAssets(), "Dosis-Medium.ttf");
+        Typeface dosis_regular = Typeface.createFromAsset(getAssets(), "Dosis-Regular.ttf");
+        Typeface dosis_semi_bold= Typeface.createFromAsset(getAssets(), "Dosis-SemiBold.ttf");
         Log.d("ITERATOR", String.valueOf(transactionsList.size()));
 
-        //TableLayout.LayoutParams tableParams = new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.FILL_PARENT);
-        //TableRow.LayoutParams rowParams = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
+        LinearLayout.LayoutParams llp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayoutCompat.LayoutParams.FILL_PARENT);
+        llp.setMargins(5, 0, 0, 0); // llp.setMargins(left, top, right, bottom);
+
         for (int i = 0; i<transactionsList.size(); ++i){
 
             Transactions transaction = transactionsList.get(i);
             TableRow row = new TableRow(this);
             tableLayout.addView(row);
-            //row.setLayoutParams(tableParams);
             TextView textView1 = new TextView(this);
-            //textView1.setLayoutParams(rowParams);
-            textView1.setText(transaction.getData());
+            textView1.setText(transaction.getTransfer_day());
+            textView1.setPadding(7,7,7,7);
+            textView1.setTextSize(20);
+            textView1.setTypeface(dosis_bold);
+            textView1.setTextAlignment(textView1.TEXT_ALIGNMENT_TEXT_START);
+            //textView1.setLayoutParams(llp);
 
             TextView textView2 = new TextView(this);
-            //textView2.setLayoutParams(rowParams);
             textView2.setText(transactionsList.get(i).getName());
+            textView2.setPadding(7,7,7,7);
+            textView2.setTextSize(20);
+            textView2.setTypeface(dosis_bold);
+            textView2.setTextAlignment(textView1.TEXT_ALIGNMENT_TEXT_START);
+            //textView2.setLayoutParams(llp);
+
 
             ImageView imageView = new ImageView(this);
 
-            if (!transaction.getStatus() == true){
+            if (!transaction.getStatus()){
                 imageView.setImageResource(R.drawable.b_vermelha);
             }
             else{
                 // colocar bola verde
-                imageView.setImageResource(R.drawable.b_vermelha);
+                imageView.setImageResource(R.drawable.b_verde);
             }
             imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
 
             TextView textView3 = new TextView(this);
-            //textView3.setLayoutParams(rowParams);
             textView3.setText(transactionsList.get(i).getAmount());
+            textView3.setPadding(7,7,7,7);
+            textView3.setTextSize(20);
+            textView3.setTypeface(dosis_bold);
+            textView3.setTextAlignment(textView1.TEXT_ALIGNMENT_VIEW_START);
+            //textView3.setLayoutParams(llp);
             row.addView(textView1);
             row.addView(textView2);
             row.addView(imageView);
@@ -279,5 +302,10 @@ public class initial_userActivity extends AppCompatActivity
 
 
         }
+    }
+    public String totalScore(List<Transactions> transactionsList){
+        String result = "";
+
+        return result;
     }
 }
