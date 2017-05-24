@@ -53,6 +53,7 @@
 
                     <TableRow>
                         <TextView
+                            android:id="@+id/valortotal"
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:padding="7dp"
