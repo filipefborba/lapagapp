@@ -3,6 +3,7 @@ package com.example.gmore.lapag;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.app.DownloadManager;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
@@ -20,6 +21,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -30,9 +32,26 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONTokener;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -64,6 +83,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private View mProgressView;
     private View mLoginFormView;
     private ImageView lapag_image;
+    private String result;
+    private boolean login;
+    public static JSONObject finaljson = new JSONObject();
+    public List<Transactions> transactions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -192,9 +215,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(true);
             mAuthTask = new UserLoginTask(email, password);
             mAuthTask.execute((Void) null);
+
             // Go to another activity
-            Intent intent = new Intent(this, initial_userActivity.class);
-            this.startActivity ( intent );
+            //Intent intent = new Intent(this, initial_userActivity.class);
+            //this.startActivity(intent);
+
         }
 
     }
@@ -303,6 +328,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
 
+
     private interface ProfileQuery {
         String[] PROJECTION = {
                 ContactsContract.CommonDataKinds.Email.ADDRESS,
@@ -329,15 +355,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         @Override
         protected Boolean doInBackground(Void... params) {
-            // TODO: attempt authentication against a network service.
-
             try {
-
-                // Simulate network access.
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                return false;
+                getRequest();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
+            // TODO: attempt authentication against a network service.
 
 
             for (String credential : DUMMY_CREDENTIALS) {
@@ -370,6 +395,100 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mAuthTask = null;
             showProgress(false);
         }
-    }
-}
 
+    }
+    public void getRequest() throws JSONException, IOException {
+        login = false;
+        // Create a new HttpClient and Post Header
+        HttpClient httpclient = new DefaultHttpClient();
+        HttpPost httppost = new HttpPost("http://107.170.100.189:8000/api/professional/transactions");
+
+        try {
+            // Add your data
+            List<NameValuePair> nameValuePairs = new ArrayList<>(2);
+            nameValuePairs.add(new BasicNameValuePair("api_key", "lapag_0e2d7757cebf70f79996"));
+            // colocar a mPassword no lugar do document number
+            nameValuePairs.add(new BasicNameValuePair("document_number", "11835671000199"));
+            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+
+
+            // Execute HTTP Post Request
+            HttpResponse response = httpclient.execute(httppost);
+
+
+        } catch (ClientProtocolException e) {
+            // TODO Auto-generated catch block
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+        }
+        // Execute HTTP Post Request
+        HttpResponse response = httpclient.execute(httppost);
+
+        try {
+
+            // Get the data in the entity
+            BufferedReader reader = new BufferedReader(
+                    new InputStreamReader(
+                            response.getEntity().getContent(), "UTF-8")
+            );
+
+            StringBuilder builder = new StringBuilder();
+            for (String line = null; (line = reader.readLine()) != null; ) {
+                builder.append(line).append("\n");
+            }
+
+            JSONTokener tokener = new JSONTokener(builder.toString());
+            finaljson =  new JSONObject(tokener);
+
+            Log.v("JSON OUTPUT: ", finaljson.toString());
+            login = true;
+            Intent intent = new Intent(this, initial_userActivity.class);
+            this.startActivity(intent);
+
+        }
+        catch (NullPointerException e){
+            // do something
+        }
+    }
+
+
+    public List<Transactions> getTransactions() {
+
+
+        List<Transactions> transactions = new ArrayList<Transactions>();
+
+        try {
+            JSONObject jsn = (JSONObject) finaljson.get("result");
+
+            JSONArray transactionsJSON = new JSONArray(jsn.get("transactions").toString());
+            int leght = transactionsJSON.length();
+            //JSONObject tr;
+            Log.d("LENGHT",String.valueOf(leght));
+
+            for (int i = 0; i < transactionsJSON.length(); i++) {
+                JSONObject json_data = transactionsJSON.getJSONObject(i);
+
+
+                Transactions objectTransaction = new Transactions();
+                objectTransaction.setData(json_data.getString("date_created"));
+                objectTransaction.setAmount(json_data.getString("amount"));
+                objectTransaction.setType(json_data.getString("type"));
+                objectTransaction.setStatus(json_data.getString("status"));
+                objectTransaction.setTransfer_day(json_data.getString("transfer_day"));
+                objectTransaction.setName(json_data.getString("client_name"));
+                objectTransaction.setDateIterator(json_data.getString("transfer_day"));
+                objectTransaction.setReal_value(json_data.getString("amount"));
+                transactions.add(objectTransaction);
+                //Log.i(" ENCONTRADA: ", String.valueOf(objectTransaction.getDate_iterator()));
+
+            }
+            return transactions;
+
+        } catch (JSONException e) {
+            Log.e("Erro", "Erro no parsing do JSON", e);}
+            Log.e("Erro", finaljson.toString());
+
+        return null;
+    }
+
+}
