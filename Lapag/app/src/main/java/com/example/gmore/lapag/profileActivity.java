@@ -11,44 +11,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.CalendarView;
-import android.widget.TableLayout;
-import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
-import java.util.Locale;
-import java.util.TimeZone;
 
-public class calendarActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
-
-    CalendarView simpleCalendarView;
-    final Locale myLocale = new Locale("pt", "BR");
-    final TimeZone timeZone = TimeZone.getTimeZone("America/Sao_Paulo");
+public class profileActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_calendar);
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_calendar);
+        setContentView(R.layout.activity_profile);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_profile);
         setSupportActionBar(toolbar);
-
-        CalendarView simpleCalendarView = (CalendarView) findViewById(R.id.simpleCalendarView); // get the reference of CalendarView
-        simpleCalendarView = (CalendarView) findViewById(R.id.simpleCalendarView); // get the reference of CalendarView
-
-        // globally
-        TextView valortotal = (TextView)findViewById(R.id.valortotal);
-        valortotal.setText("R$");
-
-
-        // perform setOnDateChangeListener event on CalendarView
-        simpleCalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-            @Override
-            public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
-                // display the selected date by using a toast
-                Toast.makeText(getApplicationContext(), dayOfMonth + "/" + month + "/" + year, Toast.LENGTH_LONG).show();
-            }
-        });
 
         //Definir fontes
         Typeface dosis_bold = Typeface.createFromAsset(getAssets(), "Dosis-Bold.ttf");
@@ -59,13 +31,29 @@ public class calendarActivity extends AppCompatActivity implements NavigationVie
         Typeface dosis_regular = Typeface.createFromAsset(getAssets(), "Dosis-Regular.ttf");
         Typeface dosis_semi_bold= Typeface.createFromAsset(getAssets(), "Dosis-SemiBold.ttf");
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_calendar);
+        TextView professionalnameLabel = (TextView) findViewById(R.id.professionalnameLabel);
+        TextView professionalname = (TextView) findViewById(R.id.professionalname);
+        TextView documentLabel = (TextView) findViewById(R.id.documentLabel);
+        TextView documentType = (TextView) findViewById(R.id.documentType);
+        TextView documentNumber = (TextView) findViewById(R.id.documentNumber);
+        TextView cellphoneNumberLabel = (TextView) findViewById(R.id.cellphoneNumberLabel);
+        TextView cellphoneNumber = (TextView) findViewById(R.id.cellphoneNumber);
+
+        professionalnameLabel.setTypeface(dosis_bold);
+        documentLabel.setTypeface(dosis_bold);
+        cellphoneNumberLabel.setTypeface(dosis_bold);
+        professionalname.setTypeface(dosis_regular);
+        documentType.setTypeface(dosis_regular);
+        documentNumber.setTypeface(dosis_regular);
+        cellphoneNumber.setTypeface(dosis_regular);
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_profile);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_calendar);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_profile);
         navigationView.setNavigationItemSelectedListener(this);
     }
 
@@ -78,20 +66,20 @@ public class calendarActivity extends AppCompatActivity implements NavigationVie
             Intent intent = new Intent(this, initial_userActivity.class);
             this.startActivity (intent);
         } else if (id == R.id.nav_cale) {
-            Intent intent = new Intent(this, calendarActivity.class);
+            Intent intent = new Intent(this, profileActivity.class);
             this.startActivity (intent);
         } else if (id == R.id.nav_perfil) {
             Intent intent = new Intent(this, profileActivity.class);
             this.startActivity (intent);
         }
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_calendar);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_profile);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_calendar);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_profile);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {

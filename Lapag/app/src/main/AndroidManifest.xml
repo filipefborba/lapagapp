@@ -6,6 +6,8 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
 
     <application
         android:allowBackup="true"
@@ -30,6 +32,15 @@
         <activity
             android:name=".calendarActivity"
             android:label="@string/title_activity_calendar"
+            android:parentActivityName=".initial_userActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.gmore.lapag.initial_userActivity" />
+        </activity>
+        <activity
+            android:name=".profileActivity"
+            android:label="Perfil"
             android:parentActivityName=".initial_userActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <meta-data
