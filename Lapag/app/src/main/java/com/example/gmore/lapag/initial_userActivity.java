@@ -5,9 +5,6 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.LinearLayoutCompat;
-import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -19,25 +16,17 @@ import android.view.MenuItem;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import com.example.gmore.lapag.LoginActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 
 public class initial_userActivity extends AppCompatActivity
@@ -185,7 +174,7 @@ public class initial_userActivity extends AppCompatActivity
             LoginActivity loginActivity = new LoginActivity();
             List<Transactions> transactionsList = loginActivity.getTransactions();
             List<Transactions> ordered_transactions = orderedTransactions(transactionsList);
-            List<Transactions> future_transactions = getFutureTransactions(ordered_transactions,getTodayIterator());
+
             createTransactions(ordered_transactions);
             if (animation_chooser == true){
                 score_view.startAnimation(fadeInAnimation);
@@ -194,6 +183,7 @@ public class initial_userActivity extends AppCompatActivity
                 proximo_recebimento_data.startAnimation(fadeInAnimation);
                 proximo_recebimento_valor.startAnimation(fadeInAnimation);
             }
+            List<Transactions> future_transactions = getFutureTransactions(ordered_transactions,getTodayIterator());
             proximo_recebimento_data.setText(getNextTransactionDate(future_transactions));
             proximo_recebimento_valor.setText(getNextTransactionAmount(future_transactions));
             score_value.setText(calculateTotal(future_transactions));
@@ -293,7 +283,7 @@ public class initial_userActivity extends AppCompatActivity
 
         TableRow.LayoutParams llp = new TableRow.LayoutParams (TableRow.LayoutParams.MATCH_PARENT,TableRow.LayoutParams.WRAP_CONTENT);
 
-        llp.setMargins(0, 5, 0, 5); // llp.setMargins(left, top, right, bottom);
+        llp.setMargins(5, 5, 5, 5); // llp.setMargins(left, top, right, bottom);
 
         for (int i = 0; i<transactionsList.size(); ++i){
 
@@ -304,7 +294,7 @@ public class initial_userActivity extends AppCompatActivity
             textView1.setText(transaction.getTransfer_day());
             textView1.setPadding(7,7,7,7);
             textView1.setTextSize(18);
-            textView1.setTypeface(dosis_bold);
+            textView1.setTypeface(dosis_medium);
             textView1.setTextAlignment(textView1.TEXT_ALIGNMENT_TEXT_START);
 
 
@@ -312,7 +302,7 @@ public class initial_userActivity extends AppCompatActivity
             textView2.setText(transactionsList.get(i).getName());
             textView2.setPadding(7,7,7,7);
             textView2.setTextSize(18);
-            textView2.setTypeface(dosis_bold);
+            textView2.setTypeface(dosis_medium);
             textView2.setTextAlignment(textView1.TEXT_ALIGNMENT_TEXT_START);
 
 
@@ -333,7 +323,7 @@ public class initial_userActivity extends AppCompatActivity
             textView3.setText(transactionsList.get(i).getAmount());
             textView3.setPadding(7,7,7,7);
             textView3.setTextSize(18);
-            textView3.setTypeface(dosis_bold);
+            textView3.setTypeface(dosis_medium);
             textView3.setTextAlignment(textView1.TEXT_ALIGNMENT_VIEW_START);
 
             row.addView(textView1);
@@ -404,7 +394,7 @@ public class initial_userActivity extends AppCompatActivity
             }
         }
         for (int j = 0; j<remove_list.size(); ++j){
-            Log.d("LIST", String.valueOf(remove_list.get(j)));
+            //Log.d("LIST", String.valueOf(remove_list.get(j)));
             new_list.remove(remove_list.get(j));
         }
 
