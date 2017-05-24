@@ -15,6 +15,8 @@ public class Transactions {
     private boolean status;
     private String transfer_day;
     private String name;
+    public int date_iterator;
+    public int real_value;
 
     public String getAmount() {
         return amount;
@@ -40,6 +42,14 @@ public class Transactions {
         return name;
     }
 
+    public int getDate_iterator(){
+        return date_iterator;
+    }
+
+    public int getReal_value(){
+        return real_value;
+    }
+
 
     public void setName(String name) {
         String[] name_list = name.split(" ");
@@ -60,8 +70,6 @@ public class Transactions {
             String amount_real = "R$" + amount.charAt(0) + amount.charAt(1) + amount.charAt(2) + amount.charAt(3) + "," + amount.charAt(4) + amount.charAt(5);
             this.amount = amount_real;
         }
-
-
 
     }
 
@@ -94,13 +102,29 @@ public class Transactions {
         if (transfer_day.charAt(5) == 1){
             iterator = 9;
         }
-        iterator+= Character.getNumericValue(transfer_day.charAt(6))-2;
+        iterator+= Character.getNumericValue(transfer_day.charAt(6))-1;
 
 
         String transfer_real = "" + transfer_day.charAt(8) + transfer_day.charAt(9) + "/" + month[iterator];
 
         this.transfer_day = transfer_real;
     }
+
+    public void setDateIterator(String transfer_day){
+        int date_iterator = 0;
+        date_iterator += Character.getNumericValue(transfer_day.charAt(5))*1000 + Character.getNumericValue(transfer_day.charAt(6))*100 + Character.getNumericValue(transfer_day.charAt(8))*10 + Character.getNumericValue(transfer_day.charAt(9));
+        this.date_iterator = date_iterator;
+
+
+    }
+
+    public void setReal_value(String amount){
+        int real_amount = Integer.parseInt(amount);
+        this.real_value = real_amount;
+
+    }
+
+
 
 
 }

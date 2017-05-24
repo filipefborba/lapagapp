@@ -467,7 +467,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             for (int i = 0; i < transactionsJSON.length(); i++) {
                 JSONObject json_data = transactionsJSON.getJSONObject(i);
-                Log.i(" ENCONTRADA: ", json_data.getString("client_name"));
+
 
                 Transactions objectTransaction = new Transactions();
                 objectTransaction.setData(json_data.getString("date_created"));
@@ -476,7 +476,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 objectTransaction.setStatus(json_data.getString("status"));
                 objectTransaction.setTransfer_day(json_data.getString("transfer_day"));
                 objectTransaction.setName(json_data.getString("client_name"));
+                objectTransaction.setDateIterator(json_data.getString("transfer_day"));
+                objectTransaction.setReal_value(json_data.getString("amount"));
                 transactions.add(objectTransaction);
+                //Log.i(" ENCONTRADA: ", String.valueOf(objectTransaction.getDate_iterator()));
 
             }
             return transactions;
