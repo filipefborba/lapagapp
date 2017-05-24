@@ -264,8 +264,9 @@ public class initial_userActivity extends AppCompatActivity
         } else if (id == R.id.nav_cale) {
             Intent intent = new Intent(this, calendarActivity.class);
             this.startActivity (intent);
-        } else if (id == R.id.nave_fale) {
-
+        } else if (id == R.id.nav_perfil) {
+            Intent intent = new Intent(this, profileActivity.class);
+            this.startActivity (intent);
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

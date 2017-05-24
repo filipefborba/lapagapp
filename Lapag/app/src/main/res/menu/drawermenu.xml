@@ -13,9 +13,9 @@
             android:icon="@android:drawable/ic_menu_today"
             android:title="Calendário" />
         <item
-            android:id="@+id/nave_fale"
-            android:icon="@android:drawable/sym_action_email"
-            android:title="Fale conosco" />
+            android:id="@+id/nav_perfil"
+            android:icon="@android:drawable/ic_menu_preferences"
+            android:title="Perfil" />
     </group>
 
 </menu>

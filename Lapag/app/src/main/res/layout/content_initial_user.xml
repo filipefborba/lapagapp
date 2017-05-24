@@ -15,6 +15,7 @@
         android:id="@+id/linearLayoulsdkftt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
         android:orientation="vertical"
         android:weightSum="1"
         app:layout_constraintHorizontal_bias="0.0"
@@ -215,11 +216,13 @@
                         android:animateLayoutChanges="true"
                         android:isScrollContainer="true"
                         android:orientation="vertical">
+
                         <TableLayout
                             android:id="@+id/tablelayout"
-                            android:layout_height="wrap_content"
                             android:layout_width="fill_parent"
-                            android:paddingRight="2dip" >
+                            android:layout_height="wrap_content"
+                            android:paddingRight="2dip">
+
 
                         </TableLayout>
 
@@ -229,7 +232,7 @@
             </LinearLayout>
 
         </LinearLayout>
-</LinearLayout>
+    </LinearLayout>
 
 
 </android.support.constraint.ConstraintLayout>
