@@ -282,7 +282,7 @@ public class initial_userActivity extends AppCompatActivity
         Typeface dosis_regular = Typeface.createFromAsset(getAssets(), "Dosis-Regular.ttf");
         Typeface dosis_semi_bold= Typeface.createFromAsset(getAssets(), "Dosis-SemiBold.ttf");
 
-        TableRow.LayoutParams llp = new TableRow.LayoutParams (TableRow.LayoutParams.MATCH_PARENT,TableRow.LayoutParams.WRAP_CONTENT);
+        TableRow.LayoutParams llp = new TableRow.LayoutParams (TableRow.LayoutParams.WRAP_CONTENT ,TableRow.LayoutParams.WRAP_CONTENT);
 
         llp.setMargins(5, 5, 5, 5); // llp.setMargins(left, top, right, bottom);
 
@@ -296,7 +296,7 @@ public class initial_userActivity extends AppCompatActivity
             textView1.setPadding(7,7,7,7);
             textView1.setTextSize(18);
             textView1.setTypeface(dosis_medium);
-            textView1.setTextAlignment(textView1.TEXT_ALIGNMENT_TEXT_START);
+            textView1.setTextAlignment(textView1.TEXT_ALIGNMENT_VIEW_START);
 
 
             TextView textView2 = new TextView(this);
@@ -304,7 +304,7 @@ public class initial_userActivity extends AppCompatActivity
             textView2.setPadding(7,7,7,7);
             textView2.setTextSize(18);
             textView2.setTypeface(dosis_medium);
-            textView2.setTextAlignment(textView1.TEXT_ALIGNMENT_TEXT_START);
+            textView2.setTextAlignment(textView1.TEXT_ALIGNMENT_CENTER);
 
 
 
@@ -317,7 +317,7 @@ public class initial_userActivity extends AppCompatActivity
                 // colocar bola verde
                 imageView.setImageResource(R.drawable.b_verde);
             }
-            imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+            imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
 
 
             TextView textView3 = new TextView(this);
@@ -325,7 +325,7 @@ public class initial_userActivity extends AppCompatActivity
             textView3.setPadding(7,7,7,7);
             textView3.setTextSize(18);
             textView3.setTypeface(dosis_medium);
-            textView3.setTextAlignment(textView1.TEXT_ALIGNMENT_VIEW_START);
+            textView3.setTextAlignment(textView1.TEXT_ALIGNMENT_TEXT_END);
 
             row.addView(textView1);
             row.addView(textView2);
