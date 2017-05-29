@@ -2,6 +2,7 @@ package com.example.gmore.lapag;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -47,15 +48,24 @@ public class calendarActivity extends AppCompatActivity implements NavigationVie
         compactCalendar.setUseThreeLetterAbbreviation(true);
         compactCalendar.setFirstDayOfWeek(Calendar.SUNDAY);
 
-        // globally
         final TextView valor_total = (TextView)findViewById(R.id.valor_total);
-        ;
+
+        //O que precisa ser feito:
+        //Pegar as informações, colocar em uma lista que criará todos as notificações de recebimento no calendario
+        //Funcao que soma os recebiveis de um dia
+ 
+        //Cria a notificação de recebimento no calendario na oor Verde
+        Event recebimento = new Event(Color.GREEN, 1494881593000L); //Data EPOCH
+        compactCalendar.addEvent(recebimento);
+
+        //Como converter a data normal em data EPOCH
+        //long epoch = new java.text.SimpleDateFormat("MM/dd/yyyy HH:mm:ss").parse("01/01/1970 01:00:00").getTime() / 1000;
 
         compactCalendar.setListener(new CompactCalendarView.CompactCalendarViewListener() {
             @Override
             public void onDayClick(Date dateClicked) {
                 Context context = getApplicationContext();
-                valor_total.setText("R$" + dateClicked);
+                valor_total.setText("R$" + "Money"); //Soma do valor a ser recebido no dia
             }
 
             @Override
