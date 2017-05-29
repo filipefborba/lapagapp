@@ -36,10 +36,6 @@ public class calendarActivity extends AppCompatActivity implements NavigationVie
         CalendarView simpleCalendarView = (CalendarView) findViewById(R.id.simpleCalendarView); // get the reference of CalendarView
         simpleCalendarView = (CalendarView) findViewById(R.id.simpleCalendarView); // get the reference of CalendarView
 
-        // globally
-        TextView valortotal = (TextView)findViewById(R.id.valortotal);
-        valortotal.setText("R$");
-
 
         // perform setOnDateChangeListener event on CalendarView
         simpleCalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
@@ -58,6 +54,15 @@ public class calendarActivity extends AppCompatActivity implements NavigationVie
         Typeface dosis_medium = Typeface.createFromAsset(getAssets(), "Dosis-Medium.ttf");
         Typeface dosis_regular = Typeface.createFromAsset(getAssets(), "Dosis-Regular.ttf");
         Typeface dosis_semi_bold= Typeface.createFromAsset(getAssets(), "Dosis-SemiBold.ttf");
+
+        TextView total = (TextView) findViewById(R.id.total);
+        TextView valor_total = (TextView) findViewById(R.id.valor_total);
+
+        total.setTypeface(dosis_bold);
+        valor_total.setTypeface(dosis_bold);
+
+        total.setTypeface(dosis_bold);
+        valor_total.setTypeface(dosis_bold);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_calendar);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
