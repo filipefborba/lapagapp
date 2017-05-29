@@ -53,7 +53,7 @@ public class calendarActivity extends AppCompatActivity implements NavigationVie
         //O que precisa ser feito:
         //Pegar as informações, colocar em uma lista que criará todos as notificações de recebimento no calendario
         //Funcao que soma os recebiveis de um dia
- 
+
         //Cria a notificação de recebimento no calendario na oor Verde
         Event recebimento = new Event(Color.GREEN, 1494881593000L); //Data EPOCH
         compactCalendar.addEvent(recebimento);
