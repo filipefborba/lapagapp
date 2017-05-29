@@ -6,76 +6,60 @@
     android:id="@+id/main_content"
     >
 
-    <CalendarView
-        android:id="@+id/simpleCalendarView"
+    <com.github.sundeepk.compactcalendarview.CompactCalendarView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/compactcalendar_view"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="350dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="40dp"
-        android:dateTextAppearance="@style/TextAppearance.AppCompat"
-        android:elevation="1dp"
-        android:focusedMonthDateColor="@color/colorAccent"
-        android:maxDate="31/12/2020"
-        android:minDate="01/01/2017"
-        android:unfocusedMonthDateColor="@color/black_overlay"
-        android:weekDayTextAppearance="@style/TextAppearance.AppCompat.Button"
-        android:weekSeparatorLineColor="@color/aprovadas" />
+        android:layout_marginTop="45dp"
+        app:compactCalendarTextSize="12sp"
+        app:compactCalendarBackgroundColor="#ffffffff"
+        app:compactCalendarTextColor="#000"
+        app:compactCalendarCurrentSelectedDayBackgroundColor="@color/colorAccent"
+        app:compactCalendarCurrentDayBackgroundColor="@color/aprovadas"
+        app:compactCalendarMultiEventIndicatorColor="#fff"
+        />
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:fillViewport="true"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:scrollbars="vertical"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/simpleCalendarView">
+        android:gravity="center"
+        android:layout_below="@+id/compactcalendar_view"
+        android:layout_marginTop="40dp">
 
-        <ScrollView
-            android:id="@+id/scroll_view_list"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <View
+            android:id="@+id/bloco"
+            android:layout_width="6dp"
+            android:layout_height="50dp"
+            android:background="#00CD66"
+            />
 
-            <LinearLayout
-                android:id="@+id/table"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:animateLayoutChanges="true"
-                android:isScrollContainer="true"
-                android:orientation="vertical">
+        <TextView
+            android:id="@+id/total"
+            android:layout_width="160dp"
+            android:layout_height="50dp"
+            android:background="@drawable/rectangle_total"
+            android:text="Total"
+            android:textSize="20sp"
+            android:gravity="center" />
 
-                <TableLayout
-                    android:id="@+id/tabela"
-                    android:layout_height="wrap_content"
-                    android:layout_width="fill_parent">
-
-                    <TableRow>
-                        <TextView
-                            android:id="@+id/valortotal"
-                            android:layout_margin="5dp"
-                            android:layout_weight="1"
-                            android:padding="7dp"
-                            android:text="Cliente"
-                            android:textColor="@color/colorPrimary"
-                            android:textAlignment="center"
-                            android:textSize="20sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_margin="5dp"
-                            android:layout_weight="1"
-                            android:padding="7dp"
-                            android:text="Valor"
-                            android:textColor="@color/colorPrimary"
-                            android:textAlignment="center"
-                            android:textSize="20sp"
-                            android:textStyle="bold" />
-                    </TableRow>
-                </TableLayout>
-            </LinearLayout>
-        </ScrollView>
+        <TextView
+            android:id="@+id/valor_total"
+            android:layout_width="160dp"
+            android:layout_height="58dp"
+            android:background="@drawable/rectangle_valor"
+            android:text="R$ "
+            android:textSize="20sp"
+            android:gravity="center"
+            android:textColor="#FFFFFF"/>
     </LinearLayout>
+
 
 </RelativeLayout>

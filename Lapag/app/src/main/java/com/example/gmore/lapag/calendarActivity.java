@@ -1,5 +1,6 @@
 package com.example.gmore.lapag;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -16,39 +17,53 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
+import java.text.SimpleDateFormat;
+
+import com.github.sundeepk.compactcalendarview.CompactCalendarView;
+import com.github.sundeepk.compactcalendarview.domain.Event;
 
 public class calendarActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
-    CalendarView simpleCalendarView;
+    CompactCalendarView compactCalendar;
     final Locale myLocale = new Locale("pt", "BR");
     final TimeZone timeZone = TimeZone.getTimeZone("America/Sao_Paulo");
+    private SimpleDateFormat dateFormatMonth = new SimpleDateFormat("MMMM - yyyy", myLocale);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_calendar);
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_calendar);
         setSupportActionBar(toolbar);
+        toolbar.setTitle(null);
 
-        CalendarView simpleCalendarView = (CalendarView) findViewById(R.id.simpleCalendarView); // get the reference of CalendarView
-        simpleCalendarView = (CalendarView) findViewById(R.id.simpleCalendarView); // get the reference of CalendarView
+        compactCalendar = (CompactCalendarView) findViewById(R.id.compactcalendar_view);
+        compactCalendar.setUseThreeLetterAbbreviation(true);
+        compactCalendar.setFirstDayOfWeek(Calendar.SUNDAY);
 
         // globally
-        TextView valortotal = (TextView)findViewById(R.id.valortotal);
-        valortotal.setText("R$");
+        final TextView valor_total = (TextView)findViewById(R.id.valor_total);
+        ;
 
-
-        // perform setOnDateChangeListener event on CalendarView
-        simpleCalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+        compactCalendar.setListener(new CompactCalendarView.CompactCalendarViewListener() {
             @Override
-            public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
-                // display the selected date by using a toast
-                Toast.makeText(getApplicationContext(), dayOfMonth + "/" + month + "/" + year, Toast.LENGTH_LONG).show();
+            public void onDayClick(Date dateClicked) {
+                Context context = getApplicationContext();
+                valor_total.setText("R$" + dateClicked);
+            }
+
+            @Override
+            public void onMonthScroll(Date firstDayOfNewMonth) {
+                toolbar.setTitle(dateFormatMonth.format(firstDayOfNewMonth));
             }
         });
+
 
         //Definir fontes
         Typeface dosis_bold = Typeface.createFromAsset(getAssets(), "Dosis-Bold.ttf");
