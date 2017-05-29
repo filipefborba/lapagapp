@@ -18,9 +18,9 @@
         app:compactCalendarBackgroundColor="#fff"
         app:compactCalendarTextColor="#000"
         app:compactCalendarCurrentSelectedDayBackgroundColor="@color/colorAccent"
-        app:compactCalendarCurrentDayBackgroundColor="@color/aprovadas"
+        app:compactCalendarCurrentDayBackgroundColor="#a966fcd4"
         app:compactCalendarMultiEventIndicatorColor="#fff"
-        />
+        app:compactCalendarEventIndicatorStyle="fill_large_indicator"/>
 
 
     <LinearLayout

@@ -55,7 +55,7 @@ public class calendarActivity extends AppCompatActivity implements NavigationVie
         //Funcao que soma os recebiveis de um dia
 
         //Cria a notificação de recebimento no calendario na oor Verde
-        Event recebimento = new Event(Color.GREEN, 1494881593000L); //Data EPOCH
+        Event recebimento = new Event(Color.parseColor("#27c587"), 1494881593000L); //Data EPOCH
         compactCalendar.addEvent(recebimento);
 
         //Como converter a data normal em data EPOCH
