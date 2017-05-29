@@ -86,6 +86,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private String result;
     private boolean login;
     public static JSONObject finaljson = new JSONObject();
+    private boolean error;
     public List<Transactions> transactions;
 
     @Override
@@ -360,6 +361,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             } catch (JSONException e) {
                 e.printStackTrace();
             } catch (IOException e) {
+                Log.d("DEU RUIM","TOIS");
                 e.printStackTrace();
             }
             // TODO: attempt authentication against a network service.
@@ -438,13 +440,32 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
 
             JSONTokener tokener = new JSONTokener(builder.toString());
-            finaljson =  new JSONObject(tokener);
+
+            try {
+                finaljson = new JSONObject(tokener);
+            } catch (JSONException e) {
+                Log.d("DEU RUIM", "CARAI");
+                error = true;
+            }
+
 
             Log.v("JSON OUTPUT: ", finaljson.toString());
             login = true;
-            Intent intent = new Intent(this, initial_userActivity.class);
-            this.startActivity(intent);
+            if (!error) {
+                Intent intent = new Intent(this, initial_userActivity.class);
+                this.startActivity(intent);
+            } else {
+                Intent intent = new Intent(this, LoginActivity.class);
+                this.startActivity(intent);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getApplicationContext(), "Erro no login", Toast.LENGTH_LONG).show();
+                    }
 
+                });
+
+            }
         }
         catch (NullPointerException e){
             // do something
