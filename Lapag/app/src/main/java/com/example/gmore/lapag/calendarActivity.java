@@ -59,8 +59,9 @@ public class calendarActivity extends AppCompatActivity implements NavigationVie
         Event recebimento = new Event(Color.parseColor("#27c587"), 1494881593000L); //Data EPOCH
         compactCalendar.addEvent(recebimento);
 
-        Event recebimento1 = new Event(Color.parseColor("#27c587"), 1495311675000L); //Data EPOCH
-        compactCalendar.addEvent(recebimento1);
+
+
+
 
         //Como converter a data normal em data EPOCH
         //long epoch = new java.text.SimpleDateFormat("MM/dd/yyyy HH:mm:ss").parse("01/01/1970 01:00:00").getTime() / 1000;
@@ -69,9 +70,10 @@ public class calendarActivity extends AppCompatActivity implements NavigationVie
             @Override
             public void onDayClick(Date dateClicked) {
                 Context context = getApplicationContext();
-                valor_total.setText("Data" + dateClicked); //Soma do valor a ser recebido no dia
                 long millis = dateClicked.getTime();
                 System.out.println(millis);
+                valor_total.setText("Valor Total"); //Soma do valor a ser recebido no dia
+                createEvent(millis);
             }
 
             @Override
@@ -79,6 +81,7 @@ public class calendarActivity extends AppCompatActivity implements NavigationVie
                 toolbar.setTitle(dateFormatMonth.format(firstDayOfNewMonth));
             }
         });
+
 
 
         //Definir fontes
@@ -135,8 +138,13 @@ public class calendarActivity extends AppCompatActivity implements NavigationVie
         //Possivelmente podemos fazer algumas animacoes no calendario
     }
 
-    public long getTodayDateEpoch(Date dataEvento){
+    public long getTodayDateEpoch(Date dataEvento){ //Converte a data em Epoch/Milliseconds (long)
         long dataEpoch = dataEvento.getTime();
         return dataEpoch;
+    }
+
+    public void createEvent(long date){ //Recebe a data, e cria o evento para esta data
+        Event recebimento = new Event(Color.parseColor("#27c587"), date); //Data EPOCH
+        compactCalendar.addEvent(recebimento);
     }
 }
