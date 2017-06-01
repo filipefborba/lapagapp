@@ -88,6 +88,17 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     public static JSONObject finaljson = new JSONObject();
     public List<Transactions> transactions;
 
+    // Login preferences
+    private static final String PREFS_NAME = "preferences";
+    private static final String PREF_USERNAME = "Username";
+    private static final String PREF_PASSWORD = "Password";
+
+    private final String DefaultUsernameValue = "";
+    private String UsernameValue;
+
+    private final String DefaultPasswordValue = "";
+    private String PasswordValue;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -177,15 +188,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         loadPreferences();
     }
 
-    private static final String PREFS_NAME = "preferences";
-    private static final String PREF_USERNAME = "Username";
-    private static final String PREF_PASSWORD = "Password";
-
-    private final String DefaultUsernameValue = "";
-    private String UsernameValue;
-
-    private final String DefaultPasswordValue = "";
-    private String PasswordValue;
 
     private void savePreferences() {
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
