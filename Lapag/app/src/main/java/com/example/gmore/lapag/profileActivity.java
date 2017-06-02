@@ -66,7 +66,7 @@ public class profileActivity extends AppCompatActivity implements NavigationView
             Intent intent = new Intent(this, initial_userActivity.class);
             this.startActivity (intent);
         } else if (id == R.id.nav_cale) {
-            Intent intent = new Intent(this, profileActivity.class);
+            Intent intent = new Intent(this, calendarActivity.class);
             this.startActivity (intent);
         } else if (id == R.id.nav_perfil) {
             Intent intent = new Intent(this, profileActivity.class);

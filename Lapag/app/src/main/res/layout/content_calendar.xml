@@ -3,25 +3,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
-    android:id="@+id/main_content"
-    >
+    android:id="@+id/main_content">
 
-    <CalendarView
-        android:id="@+id/simpleCalendarView"
+    <com.github.sundeepk.compactcalendarview.CompactCalendarView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/compactcalendar_view"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="350dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="40dp"
-        android:dateTextAppearance="@style/TextAppearance.AppCompat"
-        android:elevation="1dp"
-        android:focusedMonthDateColor="@color/colorAccent"
-        android:maxDate="31/12/2020"
-        android:minDate="01/01/2017"
-        android:unfocusedMonthDateColor="@color/black_overlay"
-        android:weekDayTextAppearance="@style/TextAppearance.AppCompat.Button"
-        android:weekSeparatorLineColor="@color/aprovadas" />
+        android:layout_marginTop="50dp"
+        app:compactCalendarTextSize="12sp"
+        app:compactCalendarBackgroundColor="#fff"
+        app:compactCalendarTextColor="#000"
+        app:compactCalendarCurrentSelectedDayBackgroundColor="@color/colorAccent"
+        app:compactCalendarCurrentDayBackgroundColor="#a966fcd4"
+        app:compactCalendarMultiEventIndicatorColor="#fff"
+        app:compactCalendarEventIndicatorStyle="fill_large_indicator"/>
 
 
     <LinearLayout
@@ -32,7 +30,7 @@
         android:scrollbars="vertical"
         android:layout_alignParentStart="true"
         android:gravity="center"
-        android:layout_below="@+id/simpleCalendarView"
+        android:layout_below="@+id/compactcalendar_view"
         android:layout_marginTop="40dp">
 
         <View
@@ -56,10 +54,11 @@
             android:layout_width="160dp"
             android:layout_height="58dp"
             android:background="@drawable/rectangle_valor"
-            android:text="R$ 574.04"
+            android:text="R$ "
             android:textSize="20sp"
             android:gravity="center"
             android:textColor="#FFFFFF"/>
     </LinearLayout>
+
 
 </RelativeLayout>
