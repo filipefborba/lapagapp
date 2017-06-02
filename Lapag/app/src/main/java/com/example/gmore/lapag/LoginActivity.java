@@ -500,7 +500,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 objectTransaction.setDateIterator(json_data.getString("transfer_day"));
                 objectTransaction.setReal_value(json_data.getString("amount"));
                 transactions.add(objectTransaction);
-                //Log.i(" ENCONTRADA: ", String.valueOf(objectTransaction.getDate_iterator()));
+                Log.i(" ENCONTRADA: ", String.valueOf(objectTransaction.getDate_iterator()));
 
             }
             return transactions;
