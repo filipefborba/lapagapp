@@ -19,7 +19,6 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -320,6 +319,7 @@ public class initial_userActivity extends AppCompatActivity
             ImageView imageView = new ImageView(this);
 
             if (!transaction.getStatus()){
+                // colocar bola vermelha
                 imageView.setImageResource(R.drawable.b_vermelha);
             }
             else{
@@ -387,7 +387,7 @@ public class initial_userActivity extends AppCompatActivity
 
 
                 row.setLayoutParams(llp);
-                row.addView(imageView);
+                //row.addView(imageView);
                 row.addView(textView1);
                 row.addView(textView2);
             } catch (NullPointerException e) {
@@ -416,7 +416,7 @@ public class initial_userActivity extends AppCompatActivity
     }
 
     public int getTodayIterator(){
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
         Date now = new Date();
         String transfer_day = sdf.format(now);
         int date_iterator = 0;
@@ -429,7 +429,7 @@ public class initial_userActivity extends AppCompatActivity
         List<Transactions> new_list = new ArrayList<>(list);
         List<Transactions> remove_list = new ArrayList<Transactions>();
         for (int i = 0; i<new_list.size(); ++i){
-            if (new_list.get(i).getDate_iterator() > today_iterator){
+            if (new_list.get(i).getDate_iterator() >= today_iterator){
                 remove_list.add(new_list.get(i));
 
             }
@@ -447,7 +447,7 @@ public class initial_userActivity extends AppCompatActivity
         List<Transactions> new_list = new ArrayList<>(list);
         List<Transactions> remove_list = new ArrayList<Transactions>();
         for (int i = 0; i<new_list.size(); ++i){
-            if (new_list.get(i).getDate_iterator() < today_iterator){
+            if (new_list.get(i).getDate_iterator() <= today_iterator){
                 remove_list.add(new_list.get(i));
 
             }

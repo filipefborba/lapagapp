@@ -33,10 +33,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -551,6 +553,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 objectTransaction.setName(json_data.getString("client_name"));
                 objectTransaction.setDateIterator(json_data.getString("transfer_day"));
                 objectTransaction.setReal_value(json_data.getString("amount"));
+                objectTransaction.setDate(json_data.getString("transfer_day"));
                 transactions.add(objectTransaction);
                 Log.i(" ENCONTRADA: ", String.valueOf(objectTransaction.getDate_iterator()));
 
@@ -558,8 +561,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             return transactions;
 
         } catch (JSONException e) {
-            Log.e("Erro", "Erro no parsing do JSON", e);}
-            Log.e("Erro", finaljson.toString());
+            Log.e("Erro", "Erro no parsing do JSON", e);} catch (ParseException e) {
+            e.printStackTrace();
+        }
+        //Log.e("Erro", finaljson.toString());
 
         return null;
     }

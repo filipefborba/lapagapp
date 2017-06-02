@@ -1,5 +1,8 @@
 package com.example.gmore.lapag;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Hashtable;
 
 import static android.provider.ContactsContract.CommonDataKinds.Website.URL;
@@ -17,6 +20,7 @@ public class Transactions {
     private String name;
     public int date_iterator;
     public int real_value;
+    public Date date;
 
     public String getAmount() {
         return amount;
@@ -49,6 +53,8 @@ public class Transactions {
     public int getReal_value(){
         return real_value;
     }
+
+    public Date getDate(){return date;}
 
 
     public void setName(String name) {
@@ -123,6 +129,21 @@ public class Transactions {
         this.real_value = real_amount;
 
     }
+
+    public void setDate(String data) throws ParseException {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
+
+        try {
+
+            Date date1 = formatter.parse(data.replaceAll("Z$", "+0000"));
+            this.date = date1;
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 
 
 
