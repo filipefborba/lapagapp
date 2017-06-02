@@ -13,17 +13,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.CalendarView;
-import android.widget.TableLayout;
-import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.text.DateFormat;
+
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
-import java.util.TimeZone;
 import java.text.SimpleDateFormat;
 
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
@@ -33,8 +29,9 @@ public class calendarActivity extends AppCompatActivity implements NavigationVie
 
     CompactCalendarView compactCalendar;
     final Locale myLocale = new Locale("pt", "BR");
-    final TimeZone timeZone = TimeZone.getTimeZone("America/Sao_Paulo");
     private SimpleDateFormat dateFormatMonth = new SimpleDateFormat("MMMM - yyyy", myLocale);
+    initial_userActivity user = new initial_userActivity();
+    List<Transactions> transactionsList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,31 +46,18 @@ public class calendarActivity extends AppCompatActivity implements NavigationVie
         compactCalendar.setUseThreeLetterAbbreviation(true);
         compactCalendar.setFirstDayOfWeek(Calendar.SUNDAY);
 
-        final TextView valor_total = (TextView)findViewById(R.id.valor_total);
+        final TextView valor_total = (TextView) findViewById(R.id.valor_total);
 
-        //O que precisa ser feito:
-        //Pegar as informações, colocar em uma lista que criará todos as notificações de recebimento no calendario
-        //Funcao que soma os recebiveis de um dia
-
-        //Cria a notificação de recebimento no calendario na oor Verde
-        Event recebimento = new Event(Color.parseColor("#27c587"), 1494881593000L); //Data EPOCH
-        compactCalendar.addEvent(recebimento);
-
-
-
-
-
-        //Como converter a data normal em data EPOCH
-        //long epoch = new java.text.SimpleDateFormat("MM/dd/yyyy HH:mm:ss").parse("01/01/1970 01:00:00").getTime() / 1000;
+//        for (int i = 0; i<transactionsList.size(); ++i){
+//            transactionsList.getTransfer_Date();
+//        }
 
         compactCalendar.setListener(new CompactCalendarView.CompactCalendarViewListener() {
             @Override
             public void onDayClick(Date dateClicked) {
                 Context context = getApplicationContext();
-                long millis = dateClicked.getTime();
-                System.out.println(millis);
                 valor_total.setText("Valor Total"); //Soma do valor a ser recebido no dia
-                createEvent(millis);
+                createEvent(getDateEpoch(dateClicked));
             }
 
             @Override
@@ -138,7 +122,7 @@ public class calendarActivity extends AppCompatActivity implements NavigationVie
         //Possivelmente podemos fazer algumas animacoes no calendario
     }
 
-    public long getTodayDateEpoch(Date dataEvento){ //Converte a data em Epoch/Milliseconds (long)
+    public long getDateEpoch(Date dataEvento){ //Converte a data em Epoch/Milliseconds (long)
         long dataEpoch = dataEvento.getTime();
         return dataEpoch;
     }
