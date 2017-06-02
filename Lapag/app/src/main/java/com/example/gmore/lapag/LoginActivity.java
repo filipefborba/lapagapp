@@ -33,10 +33,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -86,6 +88,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private String result;
     private boolean login;
     public static JSONObject finaljson = new JSONObject();
+    private boolean error;
     public List<Transactions> transactions;
 
     // Login preferences
@@ -412,6 +415,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             } catch (JSONException e) {
                 e.printStackTrace();
             } catch (IOException e) {
+                Log.d("DEU RUIM","TOIS");
                 e.printStackTrace();
             }
             // TODO: attempt authentication against a network service.
@@ -490,13 +494,32 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
 
             JSONTokener tokener = new JSONTokener(builder.toString());
-            finaljson =  new JSONObject(tokener);
+
+            try {
+                finaljson = new JSONObject(tokener);
+            } catch (JSONException e) {
+                Log.d("DEU RUIM", "CARAI");
+                error = true;
+            }
+
 
             Log.v("JSON OUTPUT: ", finaljson.toString());
             login = true;
-            Intent intent = new Intent(this, initial_userActivity.class);
-            this.startActivity(intent);
+            if (!error) {
+                Intent intent = new Intent(this, initial_userActivity.class);
+                this.startActivity(intent);
+            } else {
+                Intent intent = new Intent(this, LoginActivity.class);
+                this.startActivity(intent);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getApplicationContext(), "Erro no login", Toast.LENGTH_LONG).show();
+                    }
 
+                });
+
+            }
         }
         catch (NullPointerException e){
             // do something
@@ -530,15 +553,18 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 objectTransaction.setName(json_data.getString("client_name"));
                 objectTransaction.setDateIterator(json_data.getString("transfer_day"));
                 objectTransaction.setReal_value(json_data.getString("amount"));
+                objectTransaction.setDate(json_data.getString("transfer_day"));
                 transactions.add(objectTransaction);
-                //Log.i(" ENCONTRADA: ", String.valueOf(objectTransaction.getDate_iterator()));
+                Log.i(" ENCONTRADA: ", String.valueOf(objectTransaction.getDate_iterator()));
 
             }
             return transactions;
 
         } catch (JSONException e) {
-            Log.e("Erro", "Erro no parsing do JSON", e);}
-            Log.e("Erro", finaljson.toString());
+            Log.e("Erro", "Erro no parsing do JSON", e);} catch (ParseException e) {
+            e.printStackTrace();
+        }
+        //Log.e("Erro", finaljson.toString());
 
         return null;
     }
