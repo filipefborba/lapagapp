@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "270248524724",
+    "firebase_url": "https://lapag-app.firebaseio.com",
+    "project_id": "lapag-app",
+    "storage_bucket": "lapag-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:270248524724:android:ceb93a34c73ad514",
+        "android_client_info": {
+          "package_name": "com.example.gmore.lapag"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "270248524724-tutcve03ipjjhdn00gss352en0md8j8e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAvXMv1r-ZhSSpvsbs-Blfr5CtjiHG5UE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

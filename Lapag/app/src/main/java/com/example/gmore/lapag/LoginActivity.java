@@ -3,8 +3,9 @@ package com.example.gmore.lapag;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
-import android.app.DownloadManager;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -37,6 +38,7 @@ import android.widget.Toast;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -86,7 +88,19 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private String result;
     private boolean login;
     public static JSONObject finaljson = new JSONObject();
+    private boolean error;
     public List<Transactions> transactions;
+
+    // Login preferences
+    private static final String PREFS_NAME = "preferences";
+    private static final String PREF_USERNAME = "Username";
+    private static final String PREF_PASSWORD = "Password";
+
+    private final String DefaultUsernameValue = "";
+    private String UsernameValue;
+
+    private final String DefaultPasswordValue = "";
+    private String PasswordValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -164,6 +178,47 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        savePreferences();
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadPreferences();
+    }
+
+
+    private void savePreferences() {
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = settings.edit();
+
+        // Edit and commit
+        UsernameValue = mEmailView.getText().toString();
+        PasswordValue = mPasswordView.getText().toString();
+        System.out.println("onPause save name: " + UsernameValue);
+        System.out.println("onPause save password: " + PasswordValue);
+        editor.putString(PREF_USERNAME, UsernameValue);
+        editor.putString(PREF_PASSWORD, PasswordValue);
+        editor.commit();
+    }
+
+    private void loadPreferences() {
+
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME,
+                Context.MODE_PRIVATE);
+
+        // Get value
+        UsernameValue = settings.getString(PREF_USERNAME, DefaultUsernameValue);
+        PasswordValue = settings.getString(PREF_PASSWORD, DefaultPasswordValue);
+        mEmailView.setText(UsernameValue);
+        mPasswordView.setText(PasswordValue);
+        System.out.println("onResume load name: " + UsernameValue);
+        System.out.println("onResume load password: " + PasswordValue);
+    }
 
 
     /**
@@ -360,6 +415,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             } catch (JSONException e) {
                 e.printStackTrace();
             } catch (IOException e) {
+                Log.d("DEU RUIM","TOIS");
                 e.printStackTrace();
             }
             // TODO: attempt authentication against a network service.
@@ -438,13 +494,32 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
 
             JSONTokener tokener = new JSONTokener(builder.toString());
-            finaljson =  new JSONObject(tokener);
+
+            try {
+                finaljson = new JSONObject(tokener);
+            } catch (JSONException e) {
+                Log.d("DEU RUIM", "CARAI");
+                error = true;
+            }
+
 
             Log.v("JSON OUTPUT: ", finaljson.toString());
             login = true;
-            Intent intent = new Intent(this, initial_userActivity.class);
-            this.startActivity(intent);
+            if (!error) {
+                Intent intent = new Intent(this, initial_userActivity.class);
+                this.startActivity(intent);
+            } else {
+                Intent intent = new Intent(this, LoginActivity.class);
+                this.startActivity(intent);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getApplicationContext(), "Erro no login", Toast.LENGTH_LONG).show();
+                    }
 
+                });
+
+            }
         }
         catch (NullPointerException e){
             // do something
@@ -478,15 +553,18 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 objectTransaction.setName(json_data.getString("client_name"));
                 objectTransaction.setDateIterator(json_data.getString("transfer_day"));
                 objectTransaction.setReal_value(json_data.getString("amount"));
+                objectTransaction.setDate(json_data.getString("transfer_day"));
                 transactions.add(objectTransaction);
-                //Log.i(" ENCONTRADA: ", String.valueOf(objectTransaction.getDate_iterator()));
+                Log.i(" ENCONTRADA: ", String.valueOf(objectTransaction.getDate_iterator()));
 
             }
             return transactions;
 
         } catch (JSONException e) {
-            Log.e("Erro", "Erro no parsing do JSON", e);}
-            Log.e("Erro", finaljson.toString());
+            Log.e("Erro", "Erro no parsing do JSON", e);} catch (ParseException e) {
+            e.printStackTrace();
+        }
+        //Log.e("Erro", finaljson.toString());
 
         return null;
     }

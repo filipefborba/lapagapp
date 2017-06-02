@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -20,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -41,6 +44,8 @@ public class initial_userActivity extends AppCompatActivity
     private TextView proximo_recebimento_data;
     private boolean animation_chooser;
     private TableLayout tableLayout;
+    private ConstraintLayout constrain;
+    private LoginActivity loginActivity = new LoginActivity();
 
 
 
@@ -68,6 +73,7 @@ public class initial_userActivity extends AppCompatActivity
         proximo_recebimento_valor = (TextView) findViewById(R.id.proximo_recebimento_valor);
         proximo_recebimento_data = (TextView) findViewById(R.id.proximo_recebimento_data);
         tableLayout = (TableLayout) findViewById(R.id.tablelayout);
+        constrain = (ConstraintLayout) findViewById(R.id.constrain);
 
         score_value.setTypeface(dosis_bold);
         areceber_text.setTypeface(dosis_medium);
@@ -96,12 +102,11 @@ public class initial_userActivity extends AppCompatActivity
         button_recebidas.setTextColor(getResources().getColor(R.color.tranferido));
 
 
-        LoginActivity loginActivity = new LoginActivity();
 
         List<Transactions> transactionsList = loginActivity.getTransactions();
         List<Transactions> ordered_transactions = orderedTransactions(transactionsList);
+
         List<Transactions> future_transactions = getFutureTransactions(ordered_transactions,getTodayIterator());
-        createTransactions(future_transactions);
         proximo_recebimento_data.setText(getNextTransactionDate(future_transactions));
         proximo_recebimento_valor.setText(getNextTransactionAmount(future_transactions));
         score_value.setText(calculateTotal(future_transactions));
@@ -125,6 +130,7 @@ public class initial_userActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        createTransactions(ordered_transactions);
 
 
 
@@ -134,11 +140,11 @@ public class initial_userActivity extends AppCompatActivity
         Animation fadeInAnimation = AnimationUtils.loadAnimation(this, R.anim.fade_in);
         if (v.getId() == R.id.areceber_button) {
             tableLayout.removeAllViews();
-            LoginActivity loginActivity = new LoginActivity();
             List<Transactions> transactionsList = loginActivity.getTransactions();
             List<Transactions> ordered_transactions = orderedTransactions(transactionsList);
+            Log.d("HELLO",getDaysList(ordered_transactions).toString());
+            createTransactions(ordered_transactions);
             List<Transactions> future_transactions = getFutureTransactions(ordered_transactions,getTodayIterator());
-            createTransactions(future_transactions);
             if (animation_chooser == true){
 
                 score_view.startAnimation(fadeInAnimation);
@@ -174,8 +180,9 @@ public class initial_userActivity extends AppCompatActivity
             LoginActivity loginActivity = new LoginActivity();
             List<Transactions> transactionsList = loginActivity.getTransactions();
             List<Transactions> ordered_transactions = orderedTransactions(transactionsList);
+            List<Transactions> futures_transactions = new ArrayList<>(getFutureTransactions(ordered_transactions, getTodayIterator()));
 
-            createTransactions(ordered_transactions);
+            createTransactionsEntradas(futures_transactions);
             if (animation_chooser == true){
                 score_view.startAnimation(fadeInAnimation);
                 score_value.startAnimation(fadeInAnimation);
@@ -215,7 +222,7 @@ public class initial_userActivity extends AppCompatActivity
             List<Transactions> transactionsList = loginActivity.getTransactions();
             List<Transactions> ordered_transactions = orderedTransactions(transactionsList);
             List<Transactions> past_transactions = getPastTransactions(ordered_transactions,getTodayIterator());
-            createTransactions(past_transactions);
+            createTransactionsEntradas(past_transactions);
 
             Drawable transferido_drawable = getResources().getDrawable(R.drawable.transferido);
             score_value.setText(calculateTotal(past_transactions));
@@ -282,21 +289,22 @@ public class initial_userActivity extends AppCompatActivity
         Typeface dosis_regular = Typeface.createFromAsset(getAssets(), "Dosis-Regular.ttf");
         Typeface dosis_semi_bold= Typeface.createFromAsset(getAssets(), "Dosis-SemiBold.ttf");
 
-        TableRow.LayoutParams llp = new TableRow.LayoutParams (TableRow.LayoutParams.MATCH_PARENT,TableRow.LayoutParams.WRAP_CONTENT);
+        TableRow.LayoutParams llp = new TableRow.LayoutParams (TableRow.LayoutParams.WRAP_CONTENT ,TableRow.LayoutParams.WRAP_CONTENT);
 
-        llp.setMargins(5, 5, 5, 5); // llp.setMargins(left, top, right, bottom);
+        llp.setMargins(10, 10, 10, 5); // llp.setMargins(left, top, right, bottom);
 
         for (int i = 0; i<transactionsList.size(); ++i){
 
             Transactions transaction = transactionsList.get(i);
             TableRow row = new TableRow(this);
             tableLayout.addView(row);
+            row.setLayoutParams(llp);
             TextView textView1 = new TextView(this);
             textView1.setText(transaction.getTransfer_day());
             textView1.setPadding(7,7,7,7);
             textView1.setTextSize(18);
             textView1.setTypeface(dosis_medium);
-            textView1.setTextAlignment(textView1.TEXT_ALIGNMENT_TEXT_START);
+            textView1.setTextAlignment(textView1.TEXT_ALIGNMENT_VIEW_END);
 
 
             TextView textView2 = new TextView(this);
@@ -304,20 +312,22 @@ public class initial_userActivity extends AppCompatActivity
             textView2.setPadding(7,7,7,7);
             textView2.setTextSize(18);
             textView2.setTypeface(dosis_medium);
-            textView2.setTextAlignment(textView1.TEXT_ALIGNMENT_TEXT_START);
+            textView2.setTextAlignment(textView1.TEXT_ALIGNMENT_TEXT_END);
 
 
 
             ImageView imageView = new ImageView(this);
 
             if (!transaction.getStatus()){
+                // colocar bola vermelha
                 imageView.setImageResource(R.drawable.b_vermelha);
             }
             else{
                 // colocar bola verde
                 imageView.setImageResource(R.drawable.b_verde);
             }
-            imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+            imageView.setScaleType(ImageView.ScaleType.FIT_END);
+            imageView.setPadding(7,20,10,7);
 
 
             TextView textView3 = new TextView(this);
@@ -325,23 +335,71 @@ public class initial_userActivity extends AppCompatActivity
             textView3.setPadding(7,7,7,7);
             textView3.setTextSize(18);
             textView3.setTypeface(dosis_medium);
-            textView3.setTextAlignment(textView1.TEXT_ALIGNMENT_VIEW_START);
+            textView3.setTextAlignment(textView1.TEXT_ALIGNMENT_TEXT_END);
 
             row.addView(textView1);
             row.addView(textView2);
             row.addView(imageView);
             row.addView(textView3);
-            textView1.setLayoutParams(llp);
-            textView2.setLayoutParams(llp);
-            textView3.setLayoutParams(llp);
-            imageView.setLayoutParams(llp);
-
-
 
         }
     }
+
+    public void createTransactionsEntradas(List<Transactions> transactionsList){
+        Typeface dosis_bold = Typeface.createFromAsset(getAssets(), "Dosis-Bold.ttf");
+        Typeface dosis_extra_bold = Typeface.createFromAsset(getAssets(), "Dosis-ExtraBold.ttf");
+        Typeface dosis_extra_light = Typeface.createFromAsset(getAssets(), "Dosis-ExtraLight.ttf");
+        Typeface dosis_light = Typeface.createFromAsset(getAssets(), "Dosis-Light.ttf");
+        Typeface dosis_medium = Typeface.createFromAsset(getAssets(), "Dosis-Medium.ttf");
+        Typeface dosis_regular = Typeface.createFromAsset(getAssets(), "Dosis-Regular.ttf");
+        Typeface dosis_semi_bold= Typeface.createFromAsset(getAssets(), "Dosis-SemiBold.ttf");
+
+        TableRow.LayoutParams llp = new TableRow.LayoutParams (TableRow.LayoutParams.WRAP_CONTENT ,TableRow.LayoutParams.WRAP_CONTENT);
+
+        llp.setMargins(tableLayout.getWidth()/11, 5,tableLayout.getWidth()/11 , 5); // llp.setMargins(left, top, right, bottom);
+
+        List<Integer> days_list_iterator = getDaysList(transactionsList);
+        for(int i = 0; i < days_list_iterator.size(); ++i) {
+            TableRow row = new TableRow(this);
+            tableLayout.addView(row);
+            List<Transactions> day_list = getTodayTrasactions(transactionsList, days_list_iterator.get(i));
+            try {
+                ImageView imageView = new ImageView(this);
+
+                imageView.setImageResource(R.drawable.ic_menu_gallery);
+                imageView.setPadding(7,47,7,7);
+
+                imageView.setScaleType(ImageView.ScaleType.FIT_END);
+                TextView textView1 = new TextView(this);
+                textView1.setText(day_list.get(0).getTransfer_day());
+                textView1.setPadding(33, 33, 43, 7);
+                textView1.setTextSize(25);
+                textView1.setTypeface(dosis_medium);
+                textView1.setTextAlignment(textView1.TEXT_ALIGNMENT_VIEW_END);
+
+
+                TextView textView2 = new TextView(this);
+                textView2.setText(calculateTotal(day_list));
+                textView2.setPadding(90, 7, 23, 33);
+                textView2.setTextSize(25);
+                textView2.setTypeface(dosis_medium);
+                textView2.setTextAlignment(textView1.TEXT_ALIGNMENT_TEXT_END);
+
+
+                row.setLayoutParams(llp);
+                //row.addView(imageView);
+                row.addView(textView1);
+                row.addView(textView2);
+            } catch (NullPointerException e) {
+                Toast.makeText(getApplicationContext(), "Erro ao fazer download de dados", Toast.LENGTH_LONG).show();
+            }
+
+        }
+    }
+
+
     public List<Transactions> orderedTransactions(List<Transactions> original_list){
-        List<Transactions> ordered_transactions = original_list;
+        List<Transactions> ordered_transactions = new ArrayList<>(original_list);
         // Sorting
         Collections.sort(ordered_transactions, new Comparator<Transactions>() {
             @Override
@@ -358,7 +416,7 @@ public class initial_userActivity extends AppCompatActivity
     }
 
     public int getTodayIterator(){
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
         Date now = new Date();
         String transfer_day = sdf.format(now);
         int date_iterator = 0;
@@ -368,10 +426,10 @@ public class initial_userActivity extends AppCompatActivity
 
 
     public List<Transactions> getPastTransactions(List<Transactions> list, int today_iterator){
-        List<Transactions> new_list = list;
+        List<Transactions> new_list = new ArrayList<>(list);
         List<Transactions> remove_list = new ArrayList<Transactions>();
         for (int i = 0; i<new_list.size(); ++i){
-            if (new_list.get(i).getDate_iterator() > today_iterator){
+            if (new_list.get(i).getDate_iterator() >= today_iterator){
                 remove_list.add(new_list.get(i));
 
             }
@@ -386,10 +444,10 @@ public class initial_userActivity extends AppCompatActivity
     }
 
     public List<Transactions> getFutureTransactions(List<Transactions> list, int today_iterator){
-        List<Transactions> new_list = list;
+        List<Transactions> new_list = new ArrayList<>(list);
         List<Transactions> remove_list = new ArrayList<Transactions>();
         for (int i = 0; i<new_list.size(); ++i){
-            if (new_list.get(i).getDate_iterator() < today_iterator){
+            if (new_list.get(i).getDate_iterator() <= today_iterator){
                 remove_list.add(new_list.get(i));
 
             }
@@ -433,5 +491,27 @@ public class initial_userActivity extends AppCompatActivity
         }
 
         return null;
+    }
+
+    public List<Transactions> getTodayTrasactions (List<Transactions> list, int day_iterator){
+        List<Transactions> new_list = new ArrayList<>();
+        for (int i = 0; i<list.size(); ++i){
+            if (list.get(i).getDate_iterator() == day_iterator){
+                new_list.add(list.get(i));
+
+            }
+        }
+        return new_list;
+
+    }
+
+    public List<Integer> getDaysList(List<Transactions> list){
+        List<Integer> list_days = new ArrayList<>();
+        for (int i = 0; i<list.size(); ++i){
+            if (!list_days.contains(list.get(i).getDate_iterator())){
+                list_days.add(list.get(i).getDate_iterator());
+            }
+        }
+        return list_days;
     }
 }
