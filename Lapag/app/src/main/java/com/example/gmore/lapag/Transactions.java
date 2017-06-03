@@ -134,7 +134,10 @@ public class Transactions {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
 
         try {
-
+            //2011-10-06T12:00:00-0800
+            //2011-10-06T12:00:00-08:00"
+            //2017-05-09T23:34:59.772Z
+            // O problema ta na TIMEZONE!
             Date date1 = formatter.parse(data.replaceAll("Z$", "+0000"));
             this.date = date1;
 
@@ -143,7 +146,18 @@ public class Transactions {
         }
 
     }
-
+//
+//    public void setDate(String data) throws ParseException {
+//        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+//        try {
+//            Date dataDate = formatter.parse(data);
+//            this.date = dataDate;
+//        }
+//
+//        catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
 
 
