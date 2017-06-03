@@ -59,8 +59,7 @@ public class calendarActivity extends AppCompatActivity implements NavigationVie
             @Override
             public void onDayClick(Date dateClicked) {
                 Context context = getApplicationContext();
-                valor_total.setText("Valor Total"); //Soma do valor a ser recebido no dia
-                ;
+                valor_total.setText("Valor Total");
             }
 
             @Override
