@@ -54,7 +54,6 @@
             android:layout_width="160dp"
             android:layout_height="58dp"
             android:background="@drawable/rectangle_valor"
-            android:text="R$ "
             android:textSize="20sp"
             android:gravity="center"
             android:textColor="#FFFFFF"/>

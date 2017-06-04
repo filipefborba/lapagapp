@@ -471,7 +471,7 @@ public class initial_userActivity extends AppCompatActivity
 
     }
 
-    public String calculateTotal(List<Transactions> list){
+    public static String calculateTotal(List<Transactions> list){
         int total = 0;
         for (int i = 0; i<list.size(); ++i){
             total += list.get(i).getReal_value();
