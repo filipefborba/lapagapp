@@ -30,8 +30,8 @@ public class calendarActivity extends AppCompatActivity implements NavigationVie
     CompactCalendarView compactCalendar;
     final Locale myLocale = new Locale("pt", "BR");
     private SimpleDateFormat dateFormatMonth = new SimpleDateFormat("MMMM - yyyy", myLocale);
-    initial_userActivity user = new initial_userActivity();
-    List<Transactions> transactionsList;
+    private LoginActivity loginActivity = new LoginActivity();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,16 +48,18 @@ public class calendarActivity extends AppCompatActivity implements NavigationVie
 
         final TextView valor_total = (TextView) findViewById(R.id.valor_total);
 
-//        for (int i = 0; i<transactionsList.size(); ++i){
-//            transactionsList.getTransfer_Date();
-//        }
+        LoginActivity loginactivity = new LoginActivity();
+        List<Transactions> transactionsList = loginActivity.getTransactions();
+
+        for (int i = 0; i<transactionsList.size(); ++i){
+            createEvent(getDateEpoch(transactionsList.get(i).getDate()));
+        }
 
         compactCalendar.setListener(new CompactCalendarView.CompactCalendarViewListener() {
             @Override
             public void onDayClick(Date dateClicked) {
                 Context context = getApplicationContext();
-                valor_total.setText("Valor Total"); //Soma do valor a ser recebido no dia
-                createEvent(getDateEpoch(dateClicked));
+                valor_total.setText("Valor Total");
             }
 
             @Override

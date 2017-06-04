@@ -131,21 +131,14 @@ public class Transactions {
     }
 
     public void setDate(String data) throws ParseException {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
-
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         try {
-
-            Date date1 = formatter.parse(data.replaceAll("Z$", "+0000"));
-            this.date = date1;
-
-        } catch (ParseException e) {
-            e.printStackTrace();
+            Date dataDate = formatter.parse(data);
+            this.date = dataDate;
         }
 
+        catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
-
-
-
-
-
 }
