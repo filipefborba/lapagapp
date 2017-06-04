@@ -11,11 +11,13 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -32,7 +34,6 @@ public class calendarActivity extends AppCompatActivity implements NavigationVie
     private SimpleDateFormat dateFormatMonth = new SimpleDateFormat("MMMM - yyyy", myLocale);
     private LoginActivity loginActivity = new LoginActivity();
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,19 +48,28 @@ public class calendarActivity extends AppCompatActivity implements NavigationVie
         compactCalendar.setFirstDayOfWeek(Calendar.SUNDAY);
 
         final TextView valor_total = (TextView) findViewById(R.id.valor_total);
-
+        Date data = new Date(System.currentTimeMillis());
         LoginActivity loginactivity = new LoginActivity();
-        List<Transactions> transactionsList = loginActivity.getTransactions();
+        final List<Transactions> transactionsList = loginActivity.getTransactions();
 
         for (int i = 0; i<transactionsList.size(); ++i){
             createEvent(getDateEpoch(transactionsList.get(i).getDate()));
+
         }
 
         compactCalendar.setListener(new CompactCalendarView.CompactCalendarViewListener() {
+
+
             @Override
             public void onDayClick(Date dateClicked) {
                 Context context = getApplicationContext();
-                valor_total.setText("Valor Total");
+                List<Transactions> listaa = new ArrayList<>();
+                for (int i = 0; i<transactionsList.size(); ++i) {
+                    if (dateClicked.equals(transactionsList.get(i).getDate())) {
+                        listaa.add(transactionsList.get(i));
+                    }
+                }
+                valor_total.setText(initial_userActivity.calculateTotal(listaa));
             }
 
             @Override
@@ -67,9 +77,6 @@ public class calendarActivity extends AppCompatActivity implements NavigationVie
                 toolbar.setTitle(dateFormatMonth.format(firstDayOfNewMonth));
             }
         });
-
-
-
         //Definir fontes
         Typeface dosis_bold = Typeface.createFromAsset(getAssets(), "Dosis-Bold.ttf");
         Typeface dosis_extra_bold = Typeface.createFromAsset(getAssets(), "Dosis-ExtraBold.ttf");
