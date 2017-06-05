@@ -411,7 +411,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         @Override
         protected Boolean doInBackground(Void... params) {
             try {
-                getRequest();
+                String[] results =  getLogin(mPassword,mEmail);
+                //Log.d("USER", results[1]);
+                //Log.d("LOGIN", results[2]);
+                if (!error){
+                getRequest(results[1],results[0]);}
             } catch (JSONException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -453,7 +457,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
 
     }
-    public void getRequest() throws JSONException, IOException {
+    public void getRequest(String login_token, String user_id) throws JSONException, IOException {
         login = false;
         // Create a new HttpClient and Post Header
         HttpClient httpclient = new DefaultHttpClient();
@@ -464,7 +468,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             List<NameValuePair> nameValuePairs = new ArrayList<>(2);
             nameValuePairs.add(new BasicNameValuePair("api_key", "lapag_0e2d7757cebf70f79996"));
             // colocar a mPassword no lugar do document number
-            nameValuePairs.add(new BasicNameValuePair("document_number", "11835671000199"));
+            nameValuePairs.add(new BasicNameValuePair("login_token", login_token));
+            nameValuePairs.add(new BasicNameValuePair("user_id", user_id));
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
 
@@ -533,9 +538,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         List<Transactions> transactions = new ArrayList<Transactions>();
 
         try {
-            JSONObject jsn = (JSONObject) finaljson.get("result");
+            //JSONObject jsn = (JSONObject) finaljson.get("result");
 
-            JSONArray transactionsJSON = new JSONArray(jsn.get("transactions").toString());
+            JSONArray transactionsJSON = new JSONArray(finaljson.get("result").toString());
             int leght = transactionsJSON.length();
             //JSONObject tr;
             Log.d("LENGHT",String.valueOf(leght));
@@ -567,6 +572,104 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         //Log.e("Erro", finaljson.toString());
 
         return null;
+    }
+
+    public String[] getLogin(String password,String phone_number) throws JSONException, IOException {
+        String[] results = new String[2];
+        JSONObject json = new JSONObject();
+        login = false;
+        // Create a new HttpClient and Post Header
+        HttpClient httpclient = new DefaultHttpClient();
+        HttpPost httppost = new HttpPost("http://107.170.100.189:8000/api/professional/login");
+
+        try {
+            // Add your data
+            List<NameValuePair> nameValuePairs = new ArrayList<>(3);
+            nameValuePairs.add(new BasicNameValuePair("api_key", "lapag_0e2d7757cebf70f79996"));
+            // colocar a mPassword no lugar do document number
+            nameValuePairs.add(new BasicNameValuePair("phone_number",phone_number));
+            nameValuePairs.add(new BasicNameValuePair("password", password));
+            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+
+
+            // Execute HTTP Post Request
+            HttpResponse response = httpclient.execute(httppost);
+
+
+        } catch (ClientProtocolException e) {
+            // TODO Auto-generated catch block
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+        }
+        // Execute HTTP Post Request
+        HttpResponse response = httpclient.execute(httppost);
+
+        try {
+
+            // Get the data in the entity
+            BufferedReader reader = new BufferedReader(
+                    new InputStreamReader(
+                            response.getEntity().getContent(), "UTF-8")
+            );
+
+            StringBuilder builder = new StringBuilder();
+            for (String line = null; (line = reader.readLine()) != null; ) {
+                builder.append(line).append("\n");
+            }
+
+            JSONTokener tokener = new JSONTokener(builder.toString());
+
+            try {
+                json = new JSONObject(tokener);
+            } catch (JSONException e) {
+                Log.d("DEU RUIM", "CARAI");
+                error = true;
+            }
+
+
+            Log.v("JSON OUTPUT: ", json.toString());
+            login = true;
+            if (!error) {
+                //Intent intent = new Intent(this, initial_userActivity.class);
+                //this.startActivity(intent);
+            } else {
+                Intent intent = new Intent(this, LoginActivity.class);
+                this.startActivity(intent);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getApplicationContext(), "Erro no login", Toast.LENGTH_LONG).show();
+                    }
+
+                });
+
+            }
+        }
+        catch (NullPointerException e){
+            // do something
+        }
+        try {
+            JSONObject jsn = (JSONObject) json.get("result");
+            Log.d("RTEPDKF", jsn.toString());
+
+            results[0] = jsn.getString("user_id");
+            results[1] = jsn.getString("login_token");
+            Log.d("USER", results[0]);
+            Log.d("LOGIN", results[1]);
+        }
+        catch (JSONException e){
+            error = true;
+            Intent intent = new Intent(this, LoginActivity.class);
+            this.startActivity(intent);
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    Toast.makeText(getApplicationContext(), "Erro no login", Toast.LENGTH_LONG).show();
+                }
+
+            });
+        }
+        return results;
     }
 
 }

@@ -103,14 +103,22 @@ public class initial_userActivity extends AppCompatActivity
 
 
 
-        List<Transactions> transactionsList = loginActivity.getTransactions();
-        List<Transactions> ordered_transactions = orderedTransactions(transactionsList);
 
-        List<Transactions> future_transactions = getFutureTransactions(ordered_transactions,getTodayIterator());
-        proximo_recebimento_data.setText(getNextTransactionDate(future_transactions));
-        proximo_recebimento_valor.setText(getNextTransactionAmount(future_transactions));
-        score_value.setText(calculateTotal(future_transactions));
 
+        try {
+            List<Transactions> transactionsList = loginActivity.getTransactions();
+            List<Transactions> ordered_transactions = orderedTransactions(transactionsList);
+            List<Transactions> future_transactions = getFutureTransactions(ordered_transactions, getTodayIterator());
+            createTransactions(ordered_transactions);
+            proximo_recebimento_data.setText(getNextTransactionDate(future_transactions));
+            proximo_recebimento_valor.setText(getNextTransactionAmount(future_transactions));
+            score_value.setText(calculateTotal(future_transactions));
+        }
+        catch (NullPointerException e){
+            //Intent intent = new Intent(this, LoginActivity.class);
+            //this.startActivity(intent);
+            //Toast.makeText(getApplicationContext(), "Erro ao fazer download de dados", Toast.LENGTH_LONG).show();
+        }
 
 
 
@@ -130,7 +138,7 @@ public class initial_userActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        createTransactions(ordered_transactions);
+
 
 
 
@@ -399,6 +407,7 @@ public class initial_userActivity extends AppCompatActivity
 
 
     public List<Transactions> orderedTransactions(List<Transactions> original_list){
+        try{
         List<Transactions> ordered_transactions = new ArrayList<>(original_list);
         // Sorting
         Collections.sort(ordered_transactions, new Comparator<Transactions>() {
@@ -411,8 +420,11 @@ public class initial_userActivity extends AppCompatActivity
             }
         });
 
-        return  ordered_transactions;
-
+        return  ordered_transactions;}
+        catch (NullPointerException e){
+            Toast.makeText(getApplicationContext(), "Erro ao fazer download de dados", Toast.LENGTH_LONG).show();
+        }
+        return null;
     }
 
     public int getTodayIterator(){
