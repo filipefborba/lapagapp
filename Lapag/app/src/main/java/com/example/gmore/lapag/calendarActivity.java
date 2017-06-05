@@ -46,6 +46,8 @@ public class calendarActivity extends AppCompatActivity implements NavigationVie
         compactCalendar.setUseThreeLetterAbbreviation(true);
         compactCalendar.setFirstDayOfWeek(Calendar.SUNDAY);
 
+
+
         final TextView valor_total = (TextView) findViewById(R.id.valor_total);
         Date data = new Date(System.currentTimeMillis());
 
