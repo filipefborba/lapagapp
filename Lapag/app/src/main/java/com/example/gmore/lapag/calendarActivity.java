@@ -38,7 +38,6 @@ public class calendarActivity extends AppCompatActivity implements NavigationVie
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
-
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_calendar);
         setSupportActionBar(toolbar);
         toolbar.setTitle(null);
@@ -49,12 +48,22 @@ public class calendarActivity extends AppCompatActivity implements NavigationVie
 
         final TextView valor_total = (TextView) findViewById(R.id.valor_total);
         Date data = new Date(System.currentTimeMillis());
+
         LoginActivity loginactivity = new LoginActivity();
         final List<Transactions> transactionsList = loginActivity.getTransactions();
+        List<Transactions> lista_valores = new ArrayList<>();
 
-        for (int i = 0; i<transactionsList.size(); ++i){
+        for (int i = 0; i < transactionsList.size(); ++i) {
             createEvent(getDateEpoch(transactionsList.get(i).getDate()));
-
+            if (data.equals(transactionsList.get(i).getDate())) {
+                lista_valores.add(transactionsList.get(i));
+            }
+        }
+        if (lista_valores.isEmpty()){
+            valor_total.setText("R$0,00");
+        }
+        else {
+            valor_total.setText(initial_userActivity.calculateTotal(lista_valores));
         }
 
         compactCalendar.setListener(new CompactCalendarView.CompactCalendarViewListener() {
@@ -63,16 +72,20 @@ public class calendarActivity extends AppCompatActivity implements NavigationVie
             @Override
             public void onDayClick(Date dateClicked) {
                 Context context = getApplicationContext();
-                List<Transactions> listaa = new ArrayList<>();
-                for (int i = 0; i<transactionsList.size(); ++i) {
+                List<Transactions> lista_valores = new ArrayList<>();
+                for (int i = 0; i < transactionsList.size(); ++i) {
                     if (dateClicked.equals(transactionsList.get(i).getDate())) {
-                        listaa.add(transactionsList.get(i));
+                        lista_valores.add(transactionsList.get(i));
                     }
                 }
-                valor_total.setText(initial_userActivity.calculateTotal(listaa));
+                if (lista_valores.isEmpty()) {
+                    valor_total.setText("R$0,00");
+                } else {
+                    valor_total.setText(initial_userActivity.calculateTotal(lista_valores));
+                }
             }
 
-            @Override
+                @Override
             public void onMonthScroll(Date firstDayOfNewMonth) {
                 toolbar.setTitle(dateFormatMonth.format(firstDayOfNewMonth));
             }
