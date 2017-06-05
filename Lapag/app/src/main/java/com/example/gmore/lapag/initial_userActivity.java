@@ -491,7 +491,8 @@ public class initial_userActivity extends AppCompatActivity
     }
 
     public String getNextTransactionAmount(List<Transactions> future_transactions){
-        return future_transactions.get(0).getAmount();
+        List<Transactions> daily =  getTodayTrasactions(future_transactions,future_transactions.get(0).getDate_iterator());
+        return calculateTotal(daily);
 
     }
 
