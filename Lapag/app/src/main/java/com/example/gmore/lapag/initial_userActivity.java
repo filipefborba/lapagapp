@@ -2,11 +2,13 @@ package com.example.gmore.lapag;
 
 
 import android.content.Intent;
+import android.graphics.Point;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.util.Log;
+import android.view.Display;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -289,6 +291,11 @@ public class initial_userActivity extends AppCompatActivity
     }
 
     public void createTransactions(List<Transactions> transactionsList){
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int width = size.x;
+        int height = size.y;
         Typeface dosis_bold = Typeface.createFromAsset(getAssets(), "Dosis-Bold.ttf");
         Typeface dosis_extra_bold = Typeface.createFromAsset(getAssets(), "Dosis-ExtraBold.ttf");
         Typeface dosis_extra_light = Typeface.createFromAsset(getAssets(), "Dosis-ExtraLight.ttf");
@@ -299,7 +306,7 @@ public class initial_userActivity extends AppCompatActivity
 
         TableRow.LayoutParams llp = new TableRow.LayoutParams (TableRow.LayoutParams.WRAP_CONTENT ,TableRow.LayoutParams.WRAP_CONTENT);
 
-        llp.setMargins(10, 10, 10, 5); // llp.setMargins(left, top, right, bottom);
+        llp.setMargins(width/30, 10,5 , 10); // llp.setMargins(left, top, right, bottom);
 
         for (int i = 0; i<transactionsList.size(); ++i){
 
@@ -354,6 +361,11 @@ public class initial_userActivity extends AppCompatActivity
     }
 
     public void createTransactionsEntradas(List<Transactions> transactionsList){
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int width = size.x;
+        int height = size.y;
         Typeface dosis_bold = Typeface.createFromAsset(getAssets(), "Dosis-Bold.ttf");
         Typeface dosis_extra_bold = Typeface.createFromAsset(getAssets(), "Dosis-ExtraBold.ttf");
         Typeface dosis_extra_light = Typeface.createFromAsset(getAssets(), "Dosis-ExtraLight.ttf");
@@ -364,7 +376,7 @@ public class initial_userActivity extends AppCompatActivity
 
         TableRow.LayoutParams llp = new TableRow.LayoutParams (TableRow.LayoutParams.WRAP_CONTENT ,TableRow.LayoutParams.WRAP_CONTENT);
 
-        llp.setMargins(tableLayout.getWidth()/11, 5,tableLayout.getWidth()/11 , 5); // llp.setMargins(left, top, right, bottom);
+        llp.setMargins(width/7, 5,5 , 5); // llp.setMargins(left, top, right, bottom);
 
         List<Integer> days_list_iterator = getDaysList(transactionsList);
         for(int i = 0; i < days_list_iterator.size(); ++i) {
@@ -383,7 +395,7 @@ public class initial_userActivity extends AppCompatActivity
                 textView1.setPadding(33, 33, 43, 7);
                 textView1.setTextSize(25);
                 textView1.setTypeface(dosis_medium);
-                textView1.setTextAlignment(textView1.TEXT_ALIGNMENT_VIEW_END);
+                textView1.setTextAlignment(textView1.TEXT_ALIGNMENT_TEXT_START);
 
 
                 TextView textView2 = new TextView(this);
